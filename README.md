@@ -55,8 +55,8 @@ Python 3.8+
 An API key for Google Gemini (for AI summarization)
 
 2. Clone the Repository
-git clone [https://github.com/your-username/startt_news_dashboard.git](https://github.com/your-username/startt_news_dashboard.git)
-cd startt_news_dashboard
+git clone [https://github.com/your-username/startt_news_dashboard.git](https://github.com/your-username/startt_final_news.git)
+cd startt_fianl_news
 
 3. Install Dependencies
 It is highly recommended to create a virtual environment.
