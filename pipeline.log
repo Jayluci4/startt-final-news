@@ -1,0 +1,1571 @@
+2025-06-19 12:25:56,720 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 12:25:56,721 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 12:26:02,628 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 12:26:03,061 | master_pipeline | INFO | __init__:970 | AI summarization enabled
+2025-06-19 12:26:03,129 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 0 processed URLs
+2025-06-19 12:26:03,130 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 12:26:03,131 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 5 workers
+2025-06-19 12:26:03,133 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 10 articles)
+2025-06-19 12:26:03,135 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 10 articles)
+2025-06-19 12:26:03,137 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 10 articles)
+2025-06-19 12:26:03,141 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 10 articles)
+2025-06-19 12:26:03,142 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 10 articles)
+2025-06-19 12:26:03,453 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 12:26:03,523 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 12:26:04,057 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 12:26:04,353 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 12:26:06,637 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 12:26:06,913 | master_pipeline | INFO | scrape_source:1276 | ✅ Entrackr: Processed 'Mahaveer Finance raises Rs 200 Cr led by Elevation Capital...'
+2025-06-19 12:26:07,047 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 71 (expected 55-60)
+2025-06-19 12:26:07,098 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'OnePlus India Audit Flags Compliance & Operational Issues...'
+2025-06-19 12:26:07,117 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Urban Company turns profitable in FY25, reports Rs 240 crore...'
+2025-06-19 12:26:07,353 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'IPO-bound Urban Company turns profitable in FY25, revenue gr...'
+2025-06-19 12:26:09,415 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 6.3s - 1 articles
+2025-06-19 12:26:09,416 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 1 articles collected
+2025-06-19 12:26:09,843 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Apple eyes using AI to design its chips, technology executiv...'
+2025-06-19 12:26:11,193 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 68 (expected 55-60)
+2025-06-19 12:26:11,379 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'NBFC firm Techfino raises Rs 65 crore in equity round to boo...'
+2025-06-19 12:26:11,977 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 68 (expected 55-60)
+2025-06-19 12:26:12,005 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Vi Partners AST SpaceMobile For Satcom Services...'
+2025-06-19 12:26:12,859 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 69 (expected 55-60)
+2025-06-19 12:26:12,876 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Udaan builds payment system to cut external dependence, secu...'
+2025-06-19 12:26:14,478 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Nauru Hopes To Become Crypto Hub...'
+2025-06-19 12:26:15,750 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 72 (expected 55-60)
+2025-06-19 12:26:15,778 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Operant AI unveils MCP Gateway to secure emerging runtime AI...'
+2025-06-19 12:26:16,446 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 70 (expected 55-60)
+2025-06-19 12:26:16,471 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'The Otipy Collapse, Urban Company’s Profitable FY25 & More...'
+2025-06-19 12:26:17,954 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 71 (expected 55-60)
+2025-06-19 12:26:17,980 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Kuku FM nears $70 million fundraise at $500 million valuatio...'
+2025-06-19 12:26:19,153 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 66 (expected 55-60)
+2025-06-19 12:26:19,169 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Swedish fintech firm Klarna launches unlimited mobile plan...'
+2025-06-19 12:26:19,720 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 74 (expected 55-60)
+2025-06-19 12:26:19,752 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Bengaluru-based electric motorcycle maker Oben Electric rais...'
+2025-06-19 12:26:20,560 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 70 (expected 55-60)
+2025-06-19 12:26:20,586 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'SEBI Overhauls Norms To Boost Startup IPOs & Reverse Flippin...'
+2025-06-19 12:26:23,533 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Fintech NBFC Techfino raises Rs 65 cr from Stellaris, Saison...'
+2025-06-19 12:26:24,768 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'AI-powered childcare management platform illumine raises $2....'
+2025-06-19 12:26:24,878 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 73 (expected 55-60)
+2025-06-19 12:26:24,905 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed '[Update] Elon Musk’s Starlink Gets DoT Licence To Operate In...'
+2025-06-19 12:26:24,933 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 70 (expected 55-60)
+2025-06-19 12:26:24,952 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Numbers helped in bonding with Narayana Murthy, says former ...'
+2025-06-19 12:26:28,230 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 69 (expected 55-60)
+2025-06-19 12:26:28,253 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Vision AI startup Metafusion appoints Avinash Trivedi as Chi...'
+2025-06-19 12:26:29,589 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Meta rolls out passkeys for Facebook login on mobile: Here’s...'
+2025-06-19 12:26:29,609 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Meta launches gaming accelerator in India, partners with Bit...'
+2025-06-19 12:26:30,074 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Jio Financial Services Takes Complete Control Of Jio Payment...'
+2025-06-19 12:26:31,879 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 73 (expected 55-60)
+2025-06-19 12:26:31,991 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Growth-stage venture fund Physis Capital raises over Rs 200 ...'
+2025-06-19 12:26:33,567 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Apple debuts ‘Big Man’, a new Shot on iPhone film starring.....'
+2025-06-19 12:26:34,981 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 66 (expected 55-60)
+2025-06-19 12:26:35,005 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed '[Update] ArisInfra IPO: Issue Subscribed 24% On Day 1...'
+2025-06-19 12:26:35,280 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 68 (expected 55-60)
+2025-06-19 12:26:35,315 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Scam alert: Google flags 4.1 crore transactions on GPay, blo...'
+2025-06-19 12:26:36,175 | master_pipeline | INFO | _process_single_article:1428 | Duplicate detected: {'reason': 'title_hash_match', 'title': 'OnePlus India Audit Flags Compliance & Operational'}
+2025-06-19 12:26:36,434 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'CLR Facility Services raises $15 million from British Intern...'
+2025-06-19 12:26:38,917 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 67 (expected 55-60)
+2025-06-19 12:26:38,941 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Exclusive: Telecom Startup WIOM Raises $35 Mn In Round Led B...'
+2025-06-19 12:26:40,111 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'From Innovation to Impact:Top 10 Companies transforming Indi...'
+2025-06-19 12:26:41,076 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Healthcare-focused PE firm Quadria Group launches $300 milli...'
+2025-06-19 12:26:41,131 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'The missing middle in India’s startup ecosystem...'
+2025-06-19 12:26:42,960 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 71 (expected 55-60)
+2025-06-19 12:26:42,990 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Urban Company Turns Profitable, Posts INR 240 Cr PAT In FY25...'
+2025-06-19 12:26:43,078 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 39.9s - 9 articles
+2025-06-19 12:26:43,079 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 9 articles collected
+2025-06-19 12:26:44,117 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Circle, Coinbase shares soar as Senate clears path for stabl...'
+2025-06-19 12:26:46,990 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Razorpay enters consumer UPI space, leads $30 million invest...'
+2025-06-19 12:26:47,815 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Exclusive: Ex-Unacademy CBO Abhinav Agarwal’s New Eyewear St...'
+2025-06-19 12:26:48,204 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Stablecoin market hits record as US Senate passes bill...'
+2025-06-19 12:26:49,817 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 46.7s - 10 articles
+2025-06-19 12:26:49,818 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 10 articles collected
+2025-06-19 12:26:50,205 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 47.1s - 9 articles
+2025-06-19 12:26:50,206 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 9 articles collected
+2025-06-19 12:26:51,962 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'The cost of Y Combinator backing? Meesho, Razorpay, Groww to...'
+2025-06-19 12:26:56,862 | master_pipeline | WARNING | _generate_ai_summary:1477 | AI summary word count: 72 (expected 55-60)
+2025-06-19 12:26:56,884 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Blockchain firms come to India for ‘daily active user farmin...'
+2025-06-19 12:26:59,886 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 56.7s - 10 articles
+2025-06-19 12:26:59,887 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 10 articles collected
+2025-06-19 12:26:59,899 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 12:26:59,899 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 12:26:59,900 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 12:26:59,900 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 39
+2025-06-19 12:26:59,901 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 56.8 seconds
+2025-06-19 12:26:59,901 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 1
+2025-06-19 12:26:59,901 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 12:26:59,903 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 20
+2025-06-19 12:26:59,903 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 12:26:59,904 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 1 articles
+2025-06-19 12:26:59,904 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 9 articles
+2025-06-19 12:26:59,905 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 10 articles
+2025-06-19 12:26:59,905 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 9 articles
+2025-06-19 12:26:59,906 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 10 articles
+2025-06-19 12:26:59,907 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 1.000
+2025-06-19 12:26:59,908 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 12:26:59,919 | master_pipeline | INFO | save_to_json:1678 | 💾 Saved 39 articles to startup_news.json
+2025-06-19 13:05:41,052 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:05:41,052 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:05:41,061 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:05:41,062 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:05:41,064 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:05:41,064 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:05:45,885 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:05:46,268 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:05:46,268 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:05:46,269 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:05:46,312 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:05:46,326 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:05:47,388 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:05:47,640 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:05:47,640 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:05:47,640 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:05:47,667 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:05:47,674 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:05:47,676 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:08:10,043 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:11:08,917 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:11:08,929 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:11:08,930 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:11:13,599 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:11:13,872 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:11:13,872 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:11:13,873 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:11:13,909 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:11:13,917 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:12:09,318 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:15:20,156 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:15:20,167 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:15:20,168 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:15:25,352 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:15:25,908 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:15:25,909 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:15:25,909 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:15:25,939 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:15:25,949 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:16:12,852 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:17:37,727 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:17:37,738 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:17:37,739 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:17:42,257 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:17:42,536 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:17:42,537 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:17:42,537 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:17:42,576 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:17:42,585 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:18:39,060 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:27:33,356 | main | WARNING | __init__:204 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:27:33,364 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:27:33,364 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:27:36,899 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:27:37,156 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:27:37,157 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:27:37,158 | main | INFO | <module>:573 | Enterprise pipeline initialized successfully
+2025-06-19 13:27:37,184 | main | INFO | lifespan:582 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:27:37,191 | main | INFO | lifespan:588 | 📊 Metrics server started on port 8001
+2025-06-19 13:31:10,613 | main | INFO | lifespan:594 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:32:24,529 | main | WARNING | __init__:202 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:32:24,537 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:32:24,537 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:32:29,196 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:32:29,456 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 39 processed URLs
+2025-06-19 13:32:29,457 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:32:29,457 | main | INFO | <module>:571 | Enterprise pipeline initialized successfully
+2025-06-19 13:32:29,485 | main | INFO | lifespan:580 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:32:29,492 | main | INFO | lifespan:586 | 📊 Metrics server started on port 8001
+2025-06-19 13:32:29,492 | main | INFO | lifespan:592 | Performing initial pipeline run to populate data...
+2025-06-19 13:32:29,495 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:32:29,496 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:32:29,498 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:32:29,499 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:32:29,838 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:32:29,962 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:32:30,088 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:32:30,373 | master_pipeline | INFO | scrape_source:1276 | ✅ Entrackr: Processed 'SEBI eases IPO norms for startups with ESOP, reverse-flippin...'
+2025-06-19 13:32:30,415 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Conversational Payments Via AI Being Developed To Bolster In...'
+2025-06-19 13:32:30,586 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Amazon to invest Rs 2,000 crore in India to boost logistics,...'
+2025-06-19 13:32:32,722 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'MobiKwik Shares Crash 10% As Lock-In Period Ends...'
+2025-06-19 13:32:32,882 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 3.4s - 1 articles
+2025-06-19 13:32:32,882 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:32:32,883 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 1 articles collected
+2025-06-19 13:32:33,952 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:32:34,117 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Freshworks is now an AI company, not just SaaS, says CEO Den...'
+2025-06-19 13:32:34,234 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Google Messages rolls out ‘Delete for Everyone’ feature and ...'
+2025-06-19 13:32:34,724 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 5.2s - 2 articles
+2025-06-19 13:32:34,725 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:32:34,725 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 2 articles collected
+2025-06-19 13:32:34,964 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:32:34,965 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 13:32:34,965 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:32:37,061 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Apple’s Wallet app has key new feature for saved credit card...'
+2025-06-19 13:32:37,588 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Lack of revenue model on UPI might push more fintechs toward...'
+2025-06-19 13:32:39,412 | master_pipeline | INFO | _process_single_article:1428 | Duplicate detected: {'reason': 'title_hash_match', 'title': 'Conversational Payments Via AI Being Developed To '}
+2025-06-19 13:32:41,042 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'DailyHunt to give up office space in Bengaluru, lower rent b...'
+2025-06-19 13:32:41,789 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Binance’s CZ Calls for ‘Will Function’ to Protect Crypto Aft...'
+2025-06-19 13:32:44,114 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Hackers steal millions from Iran’s top crypto exchange...'
+2025-06-19 13:32:44,733 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'ShareChat’s chief business officer Gaurav Jain quits...'
+2025-06-19 13:32:46,512 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Can you choose an AI model that harms the planet less?...'
+2025-06-19 13:32:47,734 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 18.2s - 5 articles
+2025-06-19 13:32:47,735 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 5 articles collected
+2025-06-19 13:32:48,833 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Amazon India to infuse over Rs 2,000 crore to boost pan-Indi...'
+2025-06-19 13:32:51,218 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'OnePlus India Audit Flags Compliance & Operational Issues...'
+2025-06-19 13:32:53,219 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 20.3s - 7 articles
+2025-06-19 13:32:53,220 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 7 articles collected
+2025-06-19 13:32:53,231 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:32:53,231 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:32:53,232 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:32:53,232 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 15
+2025-06-19 13:32:53,232 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 23.7 seconds
+2025-06-19 13:32:53,233 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 1
+2025-06-19 13:32:53,233 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:32:53,234 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:32:53,234 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:32:53,234 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 1 articles
+2025-06-19 13:32:53,235 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 2 articles
+2025-06-19 13:32:53,235 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:32:53,235 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 5 articles
+2025-06-19 13:32:53,235 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 7 articles
+2025-06-19 13:32:53,236 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 1.000
+2025-06-19 13:32:53,236 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:32:53,237 | main | INFO | run_initial_pipeline:599 | Initial pipeline run completed.
+2025-06-19 13:34:10,807 | main | INFO | lifespan:609 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:37:11,880 | main | WARNING | __init__:202 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:37:11,888 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:37:11,888 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:37:15,428 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:37:15,666 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 54 processed URLs
+2025-06-19 13:37:15,666 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:37:15,667 | main | INFO | <module>:571 | Enterprise pipeline initialized successfully
+2025-06-19 13:37:15,695 | main | INFO | lifespan:580 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:37:15,701 | main | INFO | lifespan:586 | 📊 Metrics server started on port 8001
+2025-06-19 13:37:15,702 | main | INFO | lifespan:592 | Performing initial pipeline run to populate data...
+2025-06-19 13:37:15,703 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:37:15,705 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:37:15,706 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:37:15,707 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:37:15,951 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:37:15,953 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 13:37:15,953 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:37:15,953 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:37:16,113 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:37:16,114 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.4s - 0 articles
+2025-06-19 13:37:16,114 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:37:16,114 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:37:16,387 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:37:16,388 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 13:37:16,388 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:37:16,645 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:37:16,646 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.9s - 0 articles
+2025-06-19 13:37:16,647 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:37:18,402 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:37:18,704 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Explained: Sebi’s new Esop norms for IPO-bound startup found...'
+2025-06-19 13:37:20,990 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Conversational Payments Via AI Being Developed To Bolster In...'
+2025-06-19 13:37:22,991 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 7.0s - 2 articles
+2025-06-19 13:37:22,992 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 2 articles collected
+2025-06-19 13:37:23,004 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:37:23,005 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:37:23,005 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:37:23,006 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 2
+2025-06-19 13:37:23,006 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 7.3 seconds
+2025-06-19 13:37:23,006 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:37:23,007 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:37:23,007 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:37:23,007 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:37:23,007 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:37:23,008 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:37:23,008 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:37:23,008 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:37:23,009 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 2 articles
+2025-06-19 13:37:23,009 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 1.000
+2025-06-19 13:37:23,010 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:37:23,010 | main | INFO | run_initial_pipeline:599 | Initial pipeline run completed.
+2025-06-19 13:39:00,847 | main | INFO | lifespan:609 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:39:44,532 | main | WARNING | __init__:205 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:39:44,540 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:39:44,540 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:39:50,573 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:39:50,863 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 56 processed URLs
+2025-06-19 13:39:50,864 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:39:50,864 | main | INFO | <module>:574 | Enterprise pipeline initialized successfully
+2025-06-19 13:39:50,899 | main | INFO | lifespan:583 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:39:50,906 | main | INFO | lifespan:589 | 📊 Metrics server started on port 8001
+2025-06-19 13:39:50,906 | main | INFO | lifespan:595 | Performing initial pipeline run to populate data...
+2025-06-19 13:39:50,907 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:39:50,909 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:39:50,910 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:39:50,912 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:39:51,173 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:39:51,175 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 13:39:51,176 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:39:51,176 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:39:51,332 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:39:51,359 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 13:39:51,390 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:39:51,450 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:39:51,450 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:39:51,451 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 13:39:51,452 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:39:51,766 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:39:51,766 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 13:39:51,767 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:39:53,525 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:39:53,525 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 2.3s - 0 articles
+2025-06-19 13:39:53,526 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 0 articles collected
+2025-06-19 13:39:53,537 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:39:53,537 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:39:53,538 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:39:53,538 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 0
+2025-06-19 13:39:53,539 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 2.6 seconds
+2025-06-19 13:39:53,539 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:39:53,539 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:39:53,540 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:39:53,540 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:39:53,541 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:39:53,541 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:39:53,541 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:39:53,542 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:39:53,542 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 0 articles
+2025-06-19 13:39:53,542 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:39:53,543 | main | INFO | run_initial_pipeline:602 | Initial pipeline run completed.
+2025-06-19 13:40:02,156 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:40:07,912 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:40:33,284 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:40:40,613 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:41:22,178 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:41:48,388 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:42:13,042 | main | ERROR | get_articles_from_db:1247 | Database query failed: no such column: news_published_date
+2025-06-19 13:42:24,868 | main | INFO | lifespan:612 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:43:06,697 | main | WARNING | __init__:205 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:43:06,705 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:43:06,705 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:43:12,067 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:43:12,314 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 56 processed URLs
+2025-06-19 13:43:12,314 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:43:12,315 | main | INFO | <module>:574 | Enterprise pipeline initialized successfully
+2025-06-19 13:43:12,349 | main | INFO | lifespan:583 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:43:12,356 | main | INFO | lifespan:589 | 📊 Metrics server started on port 8001
+2025-06-19 13:43:12,356 | main | INFO | lifespan:595 | Performing initial pipeline run to populate data...
+2025-06-19 13:43:12,358 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:43:12,360 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:43:12,361 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:43:12,362 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:43:12,620 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:43:12,621 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 13:43:12,622 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:43:12,622 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:43:13,163 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:43:13,622 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:43:13,622 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.3s - 0 articles
+2025-06-19 13:43:13,623 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:43:13,623 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:43:13,682 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Paytm Approaches RBI To Settle Alleged FEMA Breach: Report...'
+2025-06-19 13:43:13,961 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:43:13,962 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 13:43:13,962 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:43:15,302 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:43:15,684 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 3.3s - 1 articles
+2025-06-19 13:43:15,684 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 1 articles collected
+2025-06-19 13:43:16,933 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Can Flipkart Strike A Fiscal Balance Ahead Of IPO?...'
+2025-06-19 13:43:18,934 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 6.3s - 1 articles
+2025-06-19 13:43:18,935 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 1 articles collected
+2025-06-19 13:43:18,945 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:43:18,945 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:43:18,947 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:43:18,947 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 2
+2025-06-19 13:43:18,947 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 6.6 seconds
+2025-06-19 13:43:18,947 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:43:18,948 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:43:18,948 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:43:18,948 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:43:18,949 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:43:18,949 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:43:18,949 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:43:18,950 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 1 articles
+2025-06-19 13:43:18,950 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 1 articles
+2025-06-19 13:43:18,950 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 1.000
+2025-06-19 13:43:18,951 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:43:18,951 | main | INFO | run_initial_pipeline:602 | Initial pipeline run completed.
+2025-06-19 13:46:01,978 | main | INFO | lifespan:612 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:48:17,660 | main | WARNING | __init__:205 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:48:17,668 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:48:17,668 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:48:22,650 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:48:22,903 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 58 processed URLs
+2025-06-19 13:48:22,904 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:48:22,904 | main | INFO | <module>:574 | Enterprise pipeline initialized successfully
+2025-06-19 13:48:22,940 | main | INFO | lifespan:583 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:48:22,946 | main | INFO | lifespan:589 | 📊 Metrics server started on port 8001
+2025-06-19 13:48:22,947 | main | INFO | lifespan:595 | Performing initial pipeline run to populate data...
+2025-06-19 13:48:22,949 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:48:22,950 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:48:22,951 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:48:22,952 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:48:23,271 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:48:23,272 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 13:48:23,273 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:48:23,273 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:48:23,472 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:48:23,473 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 13:48:23,473 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:48:23,474 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:48:23,721 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:48:23,722 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 13:48:23,723 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:48:23,990 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:48:23,991 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.0s - 0 articles
+2025-06-19 13:48:23,991 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:48:25,771 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:48:25,772 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 2.5s - 0 articles
+2025-06-19 13:48:25,773 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 0 articles collected
+2025-06-19 13:48:25,781 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:48:25,781 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:48:25,782 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:48:25,782 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 0
+2025-06-19 13:48:25,783 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 2.8 seconds
+2025-06-19 13:48:25,783 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:48:25,783 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:48:25,783 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:48:25,784 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:48:25,784 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:48:25,784 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:48:25,785 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:48:25,785 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:48:25,785 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 0 articles
+2025-06-19 13:48:25,785 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:48:25,786 | main | INFO | run_initial_pipeline:602 | Initial pipeline run completed.
+2025-06-19 13:50:43,514 | main | INFO | lifespan:612 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:51:19,859 | main | WARNING | __init__:205 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:51:19,868 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:51:19,869 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:51:23,750 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:51:24,246 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 58 processed URLs
+2025-06-19 13:51:24,246 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:51:24,246 | main | INFO | <module>:574 | Enterprise pipeline initialized successfully
+2025-06-19 13:51:24,279 | main | INFO | lifespan:583 | 🚀 Enterprise News Intelligence API starting up...
+2025-06-19 13:51:24,287 | main | INFO | lifespan:589 | 📊 Metrics server started on port 8001
+2025-06-19 13:51:24,287 | main | INFO | lifespan:595 | Performing initial pipeline run to populate data...
+2025-06-19 13:51:24,289 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:51:24,290 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:51:24,291 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:51:24,292 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:51:24,622 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:51:24,624 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 13:51:24,625 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:51:24,625 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:51:24,799 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:51:24,800 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 13:51:24,801 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:51:24,801 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:51:24,926 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:51:24,927 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.6s - 0 articles
+2025-06-19 13:51:24,928 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:51:25,211 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:51:25,235 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.4s - 0 articles
+2025-06-19 13:51:25,297 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:51:25,423 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:51:25,424 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.8s - 0 articles
+2025-06-19 13:51:25,425 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 0 articles collected
+2025-06-19 13:51:25,433 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:51:25,434 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:51:25,434 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:51:25,435 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 0
+2025-06-19 13:51:25,435 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 1.1 seconds
+2025-06-19 13:51:25,435 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:51:25,436 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:51:25,436 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:51:25,436 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:51:25,437 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:51:25,437 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:51:25,437 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:51:25,438 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:51:25,438 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 0 articles
+2025-06-19 13:51:25,438 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:51:25,439 | main | INFO | run_initial_pipeline:602 | Initial pipeline run completed.
+2025-06-19 13:52:52,644 | main | INFO | lifespan:612 | 🛑 Enterprise News Intelligence API shutting down...
+2025-06-19 13:56:18,475 | main | WARNING | __init__:208 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:56:18,483 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:56:18,483 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:56:23,394 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:56:23,640 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 58 processed URLs
+2025-06-19 13:56:23,641 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:56:23,642 | main | INFO | <module>:577 | Startt news pipeline initialized successfully
+2025-06-19 13:56:23,683 | main | INFO | lifespan:586 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 13:56:23,692 | main | INFO | lifespan:592 | 📊 Metrics server started on port 8001
+2025-06-19 13:56:23,693 | main | INFO | lifespan:598 | Performing initial pipeline run to populate data...
+2025-06-19 13:56:23,696 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:56:23,697 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:56:23,699 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:56:23,701 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:56:23,988 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:56:23,989 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 13:56:23,989 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:56:23,989 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:56:24,307 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:56:24,308 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 13:56:24,309 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:56:24,309 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:56:24,541 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:56:24,542 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 13:56:24,543 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:56:24,729 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:56:24,729 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.0s - 0 articles
+2025-06-19 13:56:24,730 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:56:26,198 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:56:26,893 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'How Kwiiz Success Institute Is Quietly Transforming Digital ...'
+2025-06-19 13:56:28,894 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 4.9s - 1 articles
+2025-06-19 13:56:28,894 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 1 articles collected
+2025-06-19 13:56:28,904 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:56:28,904 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:56:28,905 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:56:28,905 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 1
+2025-06-19 13:56:28,906 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 5.2 seconds
+2025-06-19 13:56:28,906 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:56:28,906 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:56:28,907 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:56:28,907 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:56:28,907 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:56:28,907 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:56:28,908 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:56:28,908 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:56:28,908 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 1 articles
+2025-06-19 13:56:28,909 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 0.850
+2025-06-19 13:56:28,909 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:56:28,909 | main | INFO | run_initial_pipeline:605 | Initial pipeline run completed.
+2025-06-19 13:56:55,772 | main | INFO | lifespan:615 | Startt News Intelligence API shutting down...
+2025-06-19 13:59:07,312 | main | WARNING | __init__:209 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 13:59:07,320 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 13:59:07,320 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 13:59:11,254 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 13:59:11,511 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 59 processed URLs
+2025-06-19 13:59:11,511 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 13:59:11,511 | main | INFO | <module>:578 | Startt news pipeline initialized successfully
+2025-06-19 13:59:11,543 | main | INFO | lifespan:587 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 13:59:11,550 | main | INFO | lifespan:593 | 📊 Metrics server started on port 8001
+2025-06-19 13:59:11,551 | main | INFO | lifespan:599 | Performing initial pipeline run to populate data...
+2025-06-19 13:59:11,553 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 13:59:11,554 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 13:59:11,555 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 13:59:11,556 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 13:59:11,785 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 13:59:11,786 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 13:59:11,786 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 13:59:11,787 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 13:59:11,934 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 13:59:11,935 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 13:59:11,935 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 13:59:11,936 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 13:59:12,056 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 13:59:12,056 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 13:59:12,058 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 13:59:12,216 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 13:59:12,217 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 13:59:12,218 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 13:59:14,322 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 13:59:14,323 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 2.5s - 0 articles
+2025-06-19 13:59:14,324 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 0 articles collected
+2025-06-19 13:59:14,333 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 13:59:14,334 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 13:59:14,334 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 13:59:14,335 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 0
+2025-06-19 13:59:14,335 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 2.8 seconds
+2025-06-19 13:59:14,335 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 13:59:14,336 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 13:59:14,336 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 13:59:14,336 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 13:59:14,337 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 13:59:14,337 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 13:59:14,337 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 13:59:14,338 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 13:59:14,338 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 0 articles
+2025-06-19 13:59:14,338 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 13:59:14,339 | main | INFO | run_initial_pipeline:606 | Initial pipeline run completed.
+2025-06-19 14:05:01,738 | main | INFO | lifespan:616 | Startt News Intelligence API shutting down...
+2025-06-19 14:05:42,029 | main | WARNING | __init__:209 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:05:42,036 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:05:42,037 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:05:45,483 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:05:45,739 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 59 processed URLs
+2025-06-19 14:05:45,739 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:05:45,740 | main | INFO | <module>:578 | Startt news pipeline initialized successfully
+2025-06-19 14:05:45,767 | main | INFO | lifespan:587 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:05:45,773 | main | INFO | lifespan:593 | 📊 Metrics server started on port 8001
+2025-06-19 14:05:45,773 | main | INFO | lifespan:599 | Performing initial pipeline run to populate data...
+2025-06-19 14:05:45,776 | master_pipeline | INFO | process_all_sources:1610 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:05:45,778 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:05:45,779 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:05:45,780 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:05:46,223 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:05:46,225 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.4s - 0 articles
+2025-06-19 14:05:46,225 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:05:46,225 | master_pipeline | INFO | process_all_sources:1630 | ✅ inc42: 0 articles collected
+2025-06-19 14:05:46,313 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:05:46,314 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.5s - 0 articles
+2025-06-19 14:05:46,314 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:05:46,315 | master_pipeline | INFO | process_all_sources:1630 | ✅ entrackr: 0 articles collected
+2025-06-19 14:05:46,510 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:05:46,511 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 14:05:46,512 | master_pipeline | INFO | process_all_sources:1630 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:05:46,882 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:05:46,883 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.1s - 0 articles
+2025-06-19 14:05:46,883 | master_pipeline | INFO | process_all_sources:1630 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:05:48,724 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:05:49,408 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'SK central bank warns local stablecoins may boost dollar use...'
+2025-06-19 14:05:51,409 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 5.2s - 1 articles
+2025-06-19 14:05:51,410 | master_pipeline | INFO | process_all_sources:1630 | ✅ startupnews: 1 articles collected
+2025-06-19 14:05:51,419 | master_pipeline | INFO | _log_pipeline_summary:1862 | 
+============================================================
+2025-06-19 14:05:51,419 | master_pipeline | INFO | _log_pipeline_summary:1863 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:05:51,420 | master_pipeline | INFO | _log_pipeline_summary:1864 | ============================================================
+2025-06-19 14:05:51,420 | master_pipeline | INFO | _log_pipeline_summary:1865 | 🎯 Total Articles: 1
+2025-06-19 14:05:51,420 | master_pipeline | INFO | _log_pipeline_summary:1866 | ⏱️  Runtime: 5.6 seconds
+2025-06-19 14:05:51,421 | master_pipeline | INFO | _log_pipeline_summary:1867 | 🔄 Duplicates Found: 0
+2025-06-19 14:05:51,421 | master_pipeline | INFO | _log_pipeline_summary:1868 | ❌ Extraction Errors: 0
+2025-06-19 14:05:51,421 | master_pipeline | INFO | _log_pipeline_summary:1869 | 🤖 AI Summaries: 0
+2025-06-19 14:05:51,422 | master_pipeline | INFO | _log_pipeline_summary:1871 | 
+📈 Source Breakdown:
+2025-06-19 14:05:51,422 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • inc42: 0 articles
+2025-06-19 14:05:51,422 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • entrackr: 0 articles
+2025-06-19 14:05:51,422 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • indianstartup: 0 articles
+2025-06-19 14:05:51,423 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • moneycontrol: 0 articles
+2025-06-19 14:05:51,423 | master_pipeline | INFO | _log_pipeline_summary:1873 |    • startupnews: 1 articles
+2025-06-19 14:05:51,423 | master_pipeline | INFO | _log_pipeline_summary:1881 | 
+📊 Average Quality Score: 0.850
+2025-06-19 14:05:51,424 | master_pipeline | INFO | _log_pipeline_summary:1883 | ============================================================
+2025-06-19 14:05:51,424 | main | INFO | run_initial_pipeline:606 | Initial pipeline run completed.
+2025-06-19 14:08:54,542 | main | INFO | lifespan:616 | Startt News Intelligence API shutting down...
+2025-06-19 14:09:34,525 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:09:34,534 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:09:34,534 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:09:38,374 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:09:38,692 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 60 processed URLs
+2025-06-19 14:09:38,693 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:09:38,693 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:09:38,731 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:09:38,739 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:09:38,739 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:11:55,781 | main | INFO | lifespan:618 | Startt News Intelligence API shutting down...
+2025-06-19 14:14:20,142 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:14:20,151 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:14:20,152 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:14:25,493 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:14:25,800 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 60 processed URLs
+2025-06-19 14:14:25,801 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:14:25,801 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:14:25,831 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:14:25,838 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:14:25,839 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:14:25,841 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:14:25,843 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:14:25,844 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:14:25,846 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:14:26,269 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:14:26,270 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.4s - 0 articles
+2025-06-19 14:14:26,302 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:14:26,318 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:14:26,365 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:14:26,367 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.5s - 0 articles
+2025-06-19 14:14:26,367 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:14:26,368 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:14:26,547 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:14:26,548 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 14:14:26,549 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:14:26,970 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:14:26,971 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.6s - 0 articles
+2025-06-19 14:14:26,971 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:14:27,287 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:14:27,288 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.4s - 0 articles
+2025-06-19 14:14:27,288 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:14:27,298 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:14:27,298 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:14:27,299 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:14:27,299 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:14:27,300 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.4 seconds
+2025-06-19 14:14:27,300 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:14:27,301 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:14:27,301 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:14:27,301 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:14:27,301 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:14:27,302 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:14:27,302 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:14:27,303 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:14:27,303 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:14:27,304 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:14:27,304 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:16:20,325 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:18:53,639 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:18:53,647 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:18:53,648 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:18:58,815 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:18:59,086 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 60 processed URLs
+2025-06-19 14:18:59,086 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:18:59,086 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:18:59,115 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:18:59,123 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:18:59,124 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:18:59,128 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:18:59,129 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:18:59,130 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:18:59,131 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:18:59,362 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:18:59,363 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 14:18:59,363 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:18:59,364 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:18:59,580 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:18:59,581 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 14:18:59,581 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:18:59,582 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:18:59,837 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:18:59,837 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:18:59,838 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:18:59,958 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:18:59,959 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.8s - 0 articles
+2025-06-19 14:18:59,960 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:19:02,259 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:19:02,644 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Elon Musk Warns of U.S. Bankruptcy as National Debt Nears $3...'
+2025-06-19 14:19:04,646 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 5.3s - 1 articles
+2025-06-19 14:19:04,646 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 1 articles collected
+2025-06-19 14:19:04,656 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:19:04,657 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:19:04,657 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:19:04,657 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 14:19:04,658 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 5.5 seconds
+2025-06-19 14:19:04,658 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:19:04,658 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:19:04,659 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:19:04,659 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:19:04,660 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:19:04,660 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:19:04,660 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:19:04,661 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:19:04,661 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 1 articles
+2025-06-19 14:19:04,661 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:19:04,662 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:19:04,662 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:19:09,353 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:19:09,353 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:19:15,351 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:19:15,357 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 61 processed URLs
+2025-06-19 14:19:15,358 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:19:15,359 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:19:15,360 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:19:15,361 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:19:15,362 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:19:15,720 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:19:15,731 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.4s - 0 articles
+2025-06-19 14:19:15,763 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:19:15,794 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:19:15,864 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:19:15,866 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 14:19:15,866 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:19:15,866 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:19:16,034 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:19:16,035 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.7s - 0 articles
+2025-06-19 14:19:16,036 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:19:16,595 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:19:16,596 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.7s - 0 articles
+2025-06-19 14:19:16,597 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:19:16,871 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:19:16,872 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 1.1s - 0 articles
+2025-06-19 14:19:16,872 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:19:16,882 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:19:16,882 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:19:16,883 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:19:16,883 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:19:16,884 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.5 seconds
+2025-06-19 14:19:16,884 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:19:16,884 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:19:16,885 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:19:16,885 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:19:16,886 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:19:16,886 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:19:16,887 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:19:16,887 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:19:16,888 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:19:16,888 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:19:16,893 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 0 articles to news_pipeline_20250619_141916.json
+2025-06-19 14:20:40,050 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:20:40,050 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:20:43,103 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:20:43,108 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 61 processed URLs
+2025-06-19 14:20:43,108 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:20:43,108 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:20:43,110 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:20:43,112 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:20:43,113 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:20:43,443 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:20:43,444 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:20:43,444 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:20:43,445 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:20:43,585 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:20:43,586 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.5s - 0 articles
+2025-06-19 14:20:43,587 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:20:43,587 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:20:43,726 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:20:43,728 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 14:20:43,728 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:20:43,877 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:20:43,877 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:20:43,878 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:20:46,014 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:20:47,485 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'IRMA Season 11 Masterclass: AI-powered risk management takes...'
+2025-06-19 14:20:49,487 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 6.0s - 1 articles
+2025-06-19 14:20:49,488 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 1 articles collected
+2025-06-19 14:20:49,499 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:20:49,500 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:20:49,500 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:20:49,501 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 14:20:49,501 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 6.4 seconds
+2025-06-19 14:20:49,502 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:20:49,502 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:20:49,502 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:20:49,503 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:20:49,503 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:20:49,503 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:20:49,503 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:20:49,504 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:20:49,504 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 1 articles
+2025-06-19 14:20:49,504 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:20:49,505 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:20:49,506 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 1 articles to news_pipeline_20250619_142049.json
+2025-06-19 14:22:48,534 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:23:26,613 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:23:26,621 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:23:26,622 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:23:30,322 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:23:30,565 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 62 processed URLs
+2025-06-19 14:23:30,566 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:23:30,567 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:23:30,593 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:23:30,600 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:23:30,600 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:23:30,603 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:23:30,605 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:23:30,606 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:23:30,607 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:23:30,999 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:23:31,083 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:23:31,083 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.5s - 0 articles
+2025-06-19 14:23:31,084 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:23:31,084 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:23:31,637 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:23:31,637 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.6s - 0 articles
+2025-06-19 14:23:31,638 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:23:31,638 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:23:31,952 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:23:31,953 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:23:31,954 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:23:32,076 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:23:32,076 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.5s - 0 articles
+2025-06-19 14:23:32,077 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:23:34,713 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'BYJU’S RP Sues Former Directors Over Alleged Transfer Of Com...'
+2025-06-19 14:23:36,714 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 6.1s - 1 articles
+2025-06-19 14:23:36,715 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 1 articles collected
+2025-06-19 14:23:36,727 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:23:36,727 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:23:36,728 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:23:36,728 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 14:23:36,728 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 6.1 seconds
+2025-06-19 14:23:36,729 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:23:36,729 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:23:36,729 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:23:36,730 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:23:36,730 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:23:36,730 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:23:36,730 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:23:36,731 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:23:36,731 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 1 articles
+2025-06-19 14:23:36,731 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:23:36,732 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:23:36,732 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:24:07,146 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:24:07,147 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:24:11,699 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:24:11,707 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 63 processed URLs
+2025-06-19 14:24:11,707 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:24:11,708 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:24:11,710 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:24:11,711 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:24:11,712 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:24:12,045 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:24:12,047 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:24:12,047 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:24:12,047 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:24:12,591 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:24:12,592 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.9s - 0 articles
+2025-06-19 14:24:12,593 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:24:12,593 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:24:12,740 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:24:13,086 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:24:13,086 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 1.0s - 0 articles
+2025-06-19 14:24:13,088 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:24:13,145 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:24:13,145 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.6s - 0 articles
+2025-06-19 14:24:13,242 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:24:13,357 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Amazon India To Invest INR 2,000 Cr To Strengthen Logistics,...'
+2025-06-19 14:24:15,359 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 3.6s - 1 articles
+2025-06-19 14:24:15,360 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 1 articles collected
+2025-06-19 14:24:15,372 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:24:15,373 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:24:15,374 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:24:15,374 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 14:24:15,374 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 3.7 seconds
+2025-06-19 14:24:15,375 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:24:15,375 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:24:15,376 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:24:15,376 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:24:15,376 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:24:15,377 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:24:15,377 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:24:15,378 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:24:15,378 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 1 articles
+2025-06-19 14:24:15,379 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:24:15,379 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:24:15,381 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 1 articles to news_pipeline_20250619_142415.json
+2025-06-19 14:25:28,057 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:25:28,058 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:25:30,935 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:25:30,940 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:25:30,941 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:25:30,941 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:25:30,943 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:25:30,944 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:25:30,946 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:25:31,283 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:25:31,284 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:25:31,284 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:25:31,284 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:25:31,441 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:25:31,441 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.5s - 0 articles
+2025-06-19 14:25:31,470 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:25:31,486 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:25:31,586 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:25:31,588 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 14:25:31,589 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:25:31,803 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:25:31,804 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 14:25:31,859 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:25:32,096 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:25:32,098 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.8s - 0 articles
+2025-06-19 14:25:32,098 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:25:32,109 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:25:32,110 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:25:32,110 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:25:32,111 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:25:32,111 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.2 seconds
+2025-06-19 14:25:32,112 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:25:32,112 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:25:32,112 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:25:32,113 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:25:32,113 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:25:32,113 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:25:32,114 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:25:32,114 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:25:32,115 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:25:32,115 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:25:32,117 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 0 articles to news_pipeline_20250619_142532.json
+2025-06-19 14:25:44,803 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:25:44,804 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:25:47,826 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:25:47,830 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:25:47,830 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:25:47,831 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:25:47,833 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:25:47,834 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:25:47,835 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:25:48,091 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:25:48,092 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:25:48,093 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:25:48,093 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:25:48,252 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:25:48,253 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 14:25:48,254 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:25:48,254 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:25:48,454 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:25:48,455 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 14:25:48,456 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:25:48,783 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:25:48,784 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:25:48,784 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:25:48,843 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:25:48,844 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.6s - 0 articles
+2025-06-19 14:25:48,845 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:25:48,856 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:25:48,856 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:25:48,857 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:25:48,857 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:25:48,858 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.0 seconds
+2025-06-19 14:25:48,858 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:25:48,859 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:25:48,859 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:25:48,860 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:25:48,860 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:25:48,860 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:25:48,861 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:25:48,861 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:25:48,862 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:25:48,862 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:25:48,864 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 0 articles to news_pipeline_20250619_142548.json
+2025-06-19 14:27:41,547 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:28:22,596 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:28:22,604 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:28:22,605 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:28:27,019 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:28:27,268 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:28:27,269 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:28:27,270 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:28:27,299 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:28:27,305 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:28:27,306 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:28:27,310 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:28:27,311 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:28:27,313 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:28:27,314 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:28:27,532 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:28:27,534 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 14:28:27,535 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:28:27,535 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:28:27,735 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:28:27,736 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.4s - 0 articles
+2025-06-19 14:28:27,737 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:28:27,737 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:28:27,864 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:28:27,864 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.5s - 0 articles
+2025-06-19 14:28:27,865 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:28:28,196 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:28:28,197 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:28:28,197 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:28:28,248 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:28:28,249 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.5s - 0 articles
+2025-06-19 14:28:28,249 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:28:28,259 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:28:28,259 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:28:28,260 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:28:28,260 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:28:28,260 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 0.9 seconds
+2025-06-19 14:28:28,261 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:28:28,261 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:28:28,261 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:28:28,262 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:28:28,262 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:28:28,262 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:28:28,262 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:28:28,263 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:28:28,263 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:28:28,263 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:28:28,264 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:33:01,263 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:33:38,466 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:33:38,474 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:33:38,474 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:33:42,975 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:33:43,221 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:33:43,222 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:33:43,222 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:33:43,248 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:33:43,262 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:33:43,263 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:33:43,266 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:33:43,269 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:33:43,269 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:33:43,270 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:33:43,506 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:33:43,507 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 14:33:43,507 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:33:43,508 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:33:43,705 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:33:43,705 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.4s - 0 articles
+2025-06-19 14:33:43,706 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:33:43,706 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:33:43,946 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:33:43,947 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 14:33:43,947 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:33:44,212 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:33:44,212 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:33:44,213 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:33:44,344 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:33:44,345 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.1s - 0 articles
+2025-06-19 14:33:44,345 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:33:44,357 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:33:44,358 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:33:44,358 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:33:44,359 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:33:44,359 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.1 seconds
+2025-06-19 14:33:44,359 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:33:44,360 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:33:44,360 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:33:44,361 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:33:44,361 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:33:44,361 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:33:44,362 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:33:44,362 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:33:44,362 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:33:44,363 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:33:44,363 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:34:29,745 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:35:05,128 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:35:05,135 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:35:05,135 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:35:10,972 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:35:11,215 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:35:11,217 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:35:11,218 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:35:11,243 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:35:11,250 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:35:11,251 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:35:11,253 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:35:11,254 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:35:11,255 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:35:11,257 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:35:11,595 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:35:11,596 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:35:11,597 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:35:11,597 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:35:11,715 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:35:11,716 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 14:35:11,716 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:35:11,716 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:35:11,841 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:35:11,841 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.6s - 0 articles
+2025-06-19 14:35:11,842 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:35:12,057 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:35:12,058 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:35:12,059 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:35:12,299 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:35:12,300 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:35:12,301 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:35:12,310 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:35:12,311 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:35:12,311 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:35:12,312 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:35:12,312 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.0 seconds
+2025-06-19 14:35:12,313 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:35:12,313 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:35:12,313 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:35:12,314 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:35:12,314 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:35:12,314 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:35:12,315 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:35:12,315 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:35:12,315 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:35:12,316 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:35:12,316 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:35:50,007 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:36:26,540 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:36:26,548 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:36:26,549 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:36:30,714 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:36:31,012 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 64 processed URLs
+2025-06-19 14:36:31,013 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:36:31,013 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:36:31,044 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:36:31,054 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:36:31,055 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:36:31,057 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:36:31,059 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:36:31,062 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:36:31,064 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:36:31,343 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:36:31,344 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 14:36:31,345 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:36:31,347 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:36:31,490 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:36:31,491 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 14:36:31,492 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:36:31,492 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:36:31,648 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:36:31,649 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 14:36:31,649 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:36:31,768 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:36:31,769 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:36:31,771 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:36:33,796 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:36:34,213 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Canva integrates Google’s Veo 3 to enable video clips with s...'
+2025-06-19 14:36:36,492 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'EU court adviser sides with regulators in Google’s fight aga...'
+2025-06-19 14:36:38,494 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 7.1s - 2 articles
+2025-06-19 14:36:38,495 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 2 articles collected
+2025-06-19 14:36:38,508 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:36:38,509 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:36:38,510 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:36:38,510 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 2
+2025-06-19 14:36:38,511 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 7.4 seconds
+2025-06-19 14:36:38,511 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:36:38,511 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:36:38,513 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:36:38,514 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:36:38,514 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:36:38,514 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:36:38,516 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:36:38,518 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:36:38,519 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 2 articles
+2025-06-19 14:36:38,520 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:36:38,520 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:36:38,522 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 14:38:18,097 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:38:18,098 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:38:22,587 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:38:22,592 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 66 processed URLs
+2025-06-19 14:38:22,592 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:38:22,593 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:38:22,594 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:38:22,596 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:38:22,597 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:38:22,840 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:38:22,841 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.2s - 0 articles
+2025-06-19 14:38:22,841 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:38:22,842 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:38:23,550 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:38:23,550 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 1.0s - 0 articles
+2025-06-19 14:38:23,552 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:38:23,552 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:38:23,705 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:38:23,706 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.1s - 0 articles
+2025-06-19 14:38:23,707 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:38:23,922 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:38:23,922 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.4s - 0 articles
+2025-06-19 14:38:23,923 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:38:25,657 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:38:27,414 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'BYJU’S RP Sues Former Directors...'
+2025-06-19 14:38:29,416 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 6.6s - 1 articles
+2025-06-19 14:38:29,416 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 1 articles collected
+2025-06-19 14:38:29,428 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:38:29,429 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:38:29,429 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:38:29,430 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 14:38:29,430 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 6.8 seconds
+2025-06-19 14:38:29,431 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:38:29,431 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:38:29,431 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:38:29,432 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:38:29,432 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:38:29,433 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:38:29,433 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:38:29,434 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:38:29,434 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 1 articles
+2025-06-19 14:38:29,434 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 14:38:29,435 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:38:29,437 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 1 articles to news_pipeline_20250619_143829.json
+2025-06-19 14:41:11,145 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:41:11,146 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:41:14,180 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:41:14,184 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 67 processed URLs
+2025-06-19 14:41:14,185 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:41:14,185 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:41:14,187 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:41:14,188 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:41:14,190 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:41:14,575 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:41:14,576 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 14:41:14,576 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:41:14,577 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:41:14,683 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:41:14,684 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.5s - 0 articles
+2025-06-19 14:41:14,684 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:41:14,685 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:41:14,841 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:41:14,842 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.7s - 0 articles
+2025-06-19 14:41:14,842 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:41:15,002 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:41:15,003 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 14:41:15,004 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:41:15,322 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:41:15,323 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:41:15,323 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:41:15,335 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:41:15,335 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:41:15,336 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:41:15,336 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:41:15,337 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.1 seconds
+2025-06-19 14:41:15,337 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:41:15,338 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:41:15,338 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:41:15,339 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:41:15,339 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:41:15,339 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:41:15,340 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:41:15,340 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:41:15,341 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:41:15,341 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:41:15,343 | master_pipeline | INFO | save_to_json:1703 | 💾 Saved 0 articles to news_pipeline_20250619_144115.json
+2025-06-19 14:41:33,467 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 14:42:47,668 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 14:42:47,676 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 14:42:47,676 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 14:42:51,574 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 14:42:51,828 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 67 processed URLs
+2025-06-19 14:42:51,828 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 14:42:51,829 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 14:42:51,854 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 14:42:51,861 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 14:42:51,862 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 14:42:51,864 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 14:42:51,865 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 14:42:51,867 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 14:42:51,868 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 14:42:52,251 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 14:42:52,252 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 0.4s - 0 articles
+2025-06-19 14:42:52,252 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 14:42:52,274 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 14:42:52,373 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 14:42:52,374 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.5s - 0 articles
+2025-06-19 14:42:52,398 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 14:42:52,398 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 14:42:52,456 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 14:42:52,457 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.6s - 0 articles
+2025-06-19 14:42:52,458 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 14:42:52,667 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 14:42:52,667 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.2s - 0 articles
+2025-06-19 14:42:52,668 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 14:42:52,965 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 14:42:52,965 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 0.7s - 0 articles
+2025-06-19 14:42:52,966 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 0 articles collected
+2025-06-19 14:42:52,975 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 14:42:52,976 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 14:42:52,976 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 14:42:52,976 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 0
+2025-06-19 14:42:52,976 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 1.1 seconds
+2025-06-19 14:42:52,976 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 14:42:52,977 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 14:42:52,977 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 14:42:52,977 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 14:42:52,978 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 14:42:52,978 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 14:42:52,978 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 14:42:52,979 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 14:42:52,979 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 0 articles
+2025-06-19 14:42:52,979 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 14:42:52,980 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 19:00:59,565 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 19:00:59,581 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 19:00:59,582 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 19:01:04,410 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 19:01:05,101 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 67 processed URLs
+2025-06-19 19:01:05,102 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 19:01:05,102 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 19:01:05,146 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 19:01:05,156 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 19:01:05,156 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 19:01:05,158 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 19:01:05,160 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 19:01:05,163 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 19:01:05,164 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 19:01:05,553 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 19:01:05,554 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.4s - 0 articles
+2025-06-19 19:01:05,554 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 19:01:05,555 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 19:01:05,698 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 19:01:06,216 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Meet The Five Indian Startups Selected For Maruti Suzuki’s A...'
+2025-06-19 19:01:06,279 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 19:01:06,902 | master_pipeline | INFO | scrape_source:1276 | ✅ Moneycontrol: Processed 'Blockchain firms come to India for ‘daily active user farmin...'
+2025-06-19 19:01:07,989 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 19:01:09,113 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'AI-Powered Childcare Management Startup illumine Bags $2.5 M...'
+2025-06-19 19:01:09,476 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'AI-powered cyber threats surge in India amid deepfake, ranso...'
+2025-06-19 19:01:09,903 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 4.7s - 1 articles
+2025-06-19 19:01:09,904 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 19:01:09,904 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 1 articles collected
+2025-06-19 19:01:10,278 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 19:01:10,452 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'Nat Habit enters omnichannel retail with q-commerce; aims to...'
+2025-06-19 19:01:11,441 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'ArisInfra IPO Day 2: Issue Subscribed 84% So Far...'
+2025-06-19 19:01:11,791 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Love robots? 5 shows where humanoid robots are unexpected he...'
+2025-06-19 19:01:12,643 | master_pipeline | INFO | scrape_source:1276 | ✅ IndianStartupNews: Processed 'ISN Exclusive: ex-Ola executive Varun Dubey starts up a hosp...'
+2025-06-19 19:01:13,776 | master_pipeline | INFO | scrape_source:1276 | ✅ Inc42: Processed 'Capillary Technologies Refiles For IPO...'
+2025-06-19 19:01:14,173 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'DuckDuckGo scam blocker detects fake stores, crypto sites, f...'
+2025-06-19 19:01:14,645 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 4.7s - 2 articles
+2025-06-19 19:01:14,645 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 2 articles collected
+2025-06-19 19:01:15,778 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 10.6s - 4 articles
+2025-06-19 19:01:15,779 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 4 articles collected
+2025-06-19 19:01:16,437 | master_pipeline | INFO | _process_single_article:1428 | Duplicate detected: {'reason': 'title_hash_match', 'title': 'Meet The Five Indian Startups Selected For Maruti '}
+2025-06-19 19:01:18,725 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Bajaj Allianz Launches State-Wise Health Insurance Policies ...'
+2025-06-19 19:01:21,013 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Nasdaq-listed Lion Group Holding Announces $600m Hype Treasu...'
+2025-06-19 19:01:23,335 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Mastek Ltd launches ADOPT. AI for enterprise AI adoption...'
+2025-06-19 19:01:25,620 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Amazon to invest $233 million in India to expand operations ...'
+2025-06-19 19:01:27,888 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Exclusive | Xiaomi India bets on localisation, premiumisatio...'
+2025-06-19 19:01:30,418 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Paytm Seeks RBI Resolution Over Alleged FEMA Violation: Repo...'
+2025-06-19 19:01:32,755 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Lighting Connect Mesh by Hafele...'
+2025-06-19 19:01:35,156 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'What Does the Development of AI Mean for the Online Experien...'
+2025-06-19 19:01:38,164 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'CLR Facility Services Secures $15 Million Investment from Br...'
+2025-06-19 19:01:40,493 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'ISA’s Sixth Regional Committee Meeting in Brussels Calls for...'
+2025-06-19 19:01:42,794 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Will focus on AI-led transformation, sunrise sectors, MSMEs ...'
+2025-06-19 19:01:44,796 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 39.2s - 14 articles
+2025-06-19 19:01:44,796 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 14 articles collected
+2025-06-19 19:01:44,810 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 19:01:44,810 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 19:01:44,811 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 19:01:44,811 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 21
+2025-06-19 19:01:44,812 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 39.6 seconds
+2025-06-19 19:01:44,812 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 1
+2025-06-19 19:01:44,812 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 19:01:44,813 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 19:01:44,813 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 19:01:44,814 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 19:01:44,814 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 1 articles
+2025-06-19 19:01:44,814 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 2 articles
+2025-06-19 19:01:44,815 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 4 articles
+2025-06-19 19:01:44,815 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 14 articles
+2025-06-19 19:01:44,815 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 19:01:44,816 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 19:01:44,816 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 19:23:32,958 | main | INFO | lifespan:619 | Startt News Intelligence API shutting down...
+2025-06-19 19:24:31,484 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 19:24:31,495 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 19:24:31,496 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 19:24:36,357 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 19:24:36,876 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 88 processed URLs
+2025-06-19 19:24:36,878 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 19:24:36,878 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 19:24:36,924 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 19:24:36,931 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 19:24:36,932 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 19:24:36,934 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 19:24:36,937 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 19:24:36,938 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 19:24:36,940 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 19:24:37,463 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 19:24:37,463 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.5s - 0 articles
+2025-06-19 19:24:37,464 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 19:24:37,464 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 19:24:37,661 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 19:24:37,663 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.7s - 0 articles
+2025-06-19 19:24:37,664 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 19:24:37,664 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 19:24:37,962 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 19:24:37,962 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 19:24:37,963 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 19:24:38,385 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 19:24:38,813 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Meet The Five Indian Startups Selected For Maruti Suzuki’s A...'
+2025-06-19 19:24:39,362 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 19:24:39,363 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 2.4s - 0 articles
+2025-06-19 19:24:39,364 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 19:24:40,814 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 3.4s - 1 articles
+2025-06-19 19:24:40,814 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 1 articles collected
+2025-06-19 19:24:40,826 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 19:24:40,829 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 19:24:40,830 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 19:24:40,830 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 1
+2025-06-19 19:24:40,830 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 3.9 seconds
+2025-06-19 19:24:40,831 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 19:24:40,831 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 19:24:40,831 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 19:24:40,832 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 19:24:40,832 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 19:24:40,833 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 19:24:40,833 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 19:24:40,833 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 19:24:40,834 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 1 articles
+2025-06-19 19:24:40,835 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 1.000
+2025-06-19 19:24:40,835 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 19:24:40,836 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-06-19 19:25:42,507 | main | WARNING | __init__:211 | Redis initialization failed: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-06-19 19:25:42,519 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cpu
+2025-06-19 19:25:42,519 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-06-19 19:25:47,767 | master_pipeline | INFO | __init__:161 | Semantic similarity model loaded
+2025-06-19 19:25:48,111 | master_pipeline | INFO | _load_processed_articles:1116 | Loaded 89 processed URLs
+2025-06-19 19:25:48,112 | master_pipeline | INFO | __init__:992 | Enterprise News Pipeline initialized
+2025-06-19 19:25:48,112 | main | INFO | <module>:580 | Startt news pipeline initialized successfully
+2025-06-19 19:25:48,158 | main | INFO | lifespan:589 | 🚀 Startt News Intelligence API starting up...
+2025-06-19 19:25:48,168 | main | INFO | lifespan:595 | 📊 Metrics server started on port 8001
+2025-06-19 19:25:48,169 | main | INFO | lifespan:601 | Performing initial pipeline run to populate data...
+2025-06-19 19:25:48,173 | master_pipeline | INFO | process_all_sources:1632 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-06-19 19:25:48,176 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Inc42 (max: 15 articles)
+2025-06-19 19:25:48,178 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Entrackr (max: 15 articles)
+2025-06-19 19:25:48,180 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping Moneycontrol (max: 15 articles)
+2025-06-19 19:25:48,525 | master_pipeline | INFO | scrape_source:1256 | Entrackr: Found 1 potential articles
+2025-06-19 19:25:48,526 | master_pipeline | INFO | scrape_source:1290 | ✅ Entrackr: Completed in 0.3s - 0 articles
+2025-06-19 19:25:48,526 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping StartupNews.fyi (max: 15 articles)
+2025-06-19 19:25:48,526 | master_pipeline | INFO | process_all_sources:1655 | ✅ entrackr: 0 articles collected
+2025-06-19 19:25:48,734 | master_pipeline | INFO | scrape_source:1256 | Inc42: Found 12 potential articles
+2025-06-19 19:25:48,735 | master_pipeline | INFO | scrape_source:1290 | ✅ Inc42: Completed in 0.6s - 0 articles
+2025-06-19 19:25:48,735 | master_pipeline | INFO | scrape_source:1234 | 🔍 Scraping IndianStartupNews (max: 15 articles)
+2025-06-19 19:25:48,735 | master_pipeline | INFO | process_all_sources:1655 | ✅ inc42: 0 articles collected
+2025-06-19 19:25:49,040 | master_pipeline | INFO | scrape_source:1256 | IndianStartupNews: Found 9 potential articles
+2025-06-19 19:25:49,041 | master_pipeline | INFO | scrape_source:1290 | ✅ IndianStartupNews: Completed in 0.3s - 0 articles
+2025-06-19 19:25:49,041 | master_pipeline | INFO | process_all_sources:1655 | ✅ indianstartup: 0 articles collected
+2025-06-19 19:25:49,456 | master_pipeline | INFO | scrape_source:1256 | StartupNews.fyi: Found 85 potential articles
+2025-06-19 19:25:49,703 | master_pipeline | INFO | scrape_source:1256 | Moneycontrol: Found 25 potential articles
+2025-06-19 19:25:49,704 | master_pipeline | INFO | scrape_source:1290 | ✅ Moneycontrol: Completed in 1.5s - 0 articles
+2025-06-19 19:25:49,704 | master_pipeline | INFO | process_all_sources:1655 | ✅ moneycontrol: 0 articles collected
+2025-06-19 19:25:50,616 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'Can you choose an AI model that harms the planet less?...'
+2025-06-19 19:25:53,097 | master_pipeline | INFO | scrape_source:1276 | ✅ StartupNews.fyi: Processed 'SpaceX rocket being tested in Texas explodes, but no injurie...'
+2025-06-19 19:25:55,098 | master_pipeline | INFO | scrape_source:1290 | ✅ StartupNews.fyi: Completed in 6.6s - 2 articles
+2025-06-19 19:25:55,098 | master_pipeline | INFO | process_all_sources:1655 | ✅ startupnews: 2 articles collected
+2025-06-19 19:25:55,114 | master_pipeline | INFO | _log_pipeline_summary:1887 | 
+============================================================
+2025-06-19 19:25:55,114 | master_pipeline | INFO | _log_pipeline_summary:1888 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-06-19 19:25:55,115 | master_pipeline | INFO | _log_pipeline_summary:1889 | ============================================================
+2025-06-19 19:25:55,116 | master_pipeline | INFO | _log_pipeline_summary:1890 | 🎯 Total Articles: 2
+2025-06-19 19:25:55,116 | master_pipeline | INFO | _log_pipeline_summary:1891 | ⏱️  Runtime: 6.9 seconds
+2025-06-19 19:25:55,116 | master_pipeline | INFO | _log_pipeline_summary:1892 | 🔄 Duplicates Found: 0
+2025-06-19 19:25:55,117 | master_pipeline | INFO | _log_pipeline_summary:1893 | ❌ Extraction Errors: 0
+2025-06-19 19:25:55,117 | master_pipeline | INFO | _log_pipeline_summary:1894 | 🤖 AI Summaries: 0
+2025-06-19 19:25:55,117 | master_pipeline | INFO | _log_pipeline_summary:1896 | 
+📈 Source Breakdown:
+2025-06-19 19:25:55,118 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • entrackr: 0 articles
+2025-06-19 19:25:55,119 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • inc42: 0 articles
+2025-06-19 19:25:55,119 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • indianstartup: 0 articles
+2025-06-19 19:25:55,120 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • moneycontrol: 0 articles
+2025-06-19 19:25:55,120 | master_pipeline | INFO | _log_pipeline_summary:1898 |    • startupnews: 2 articles
+2025-06-19 19:25:55,121 | master_pipeline | INFO | _log_pipeline_summary:1906 | 
+📊 Average Quality Score: 0.925
+2025-06-19 19:25:55,121 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
+2025-06-19 19:25:55,122 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
