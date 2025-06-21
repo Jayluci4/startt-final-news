@@ -12,6 +12,14 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    print("📄 Loaded environment variables from .env file")
+except ImportError:
+    print("⚠️  python-dotenv not available - .env file support disabled")
+
 def print_enterprise_banner():
     """Print enterprise startup banner"""
     banner = """
@@ -29,7 +37,7 @@ def print_enterprise_banner():
     print(banner)
 
 def load_enterprise_config():
-    """Load enterprise configuration"""
+    """Load enterprise configuration with enhanced .env support"""
     config = {
         'gemini_api_key': os.getenv('GEMINI_API_KEY'),
         'max_articles_per_source': int(os.getenv('MAX_ARTICLES_PER_SOURCE', '15')),
@@ -38,6 +46,12 @@ def load_enterprise_config():
         'output_file': os.getenv('OUTPUT_FILE', None),
         'verbose': os.getenv('VERBOSE', 'true').lower() == 'true'
     }
+    
+    # Log Gemini API key status
+    if config['gemini_api_key']:
+        print(f"✅ GEMINI_API_KEY loaded from environment")
+    else:
+        print(f"⚠️  GEMINI_API_KEY not found - AI summarization will use fallback methods")
     
     # Try to load from config file if it exists
     config_files = ['pipeline_config.json', 'config.json', 'enterprise_config.json']
@@ -85,7 +99,8 @@ def validate_enterprise_environment(config):
         'scikit-learn': 'sklearn',
         'sentence-transformers': 'sentence_transformers',
         'nltk': 'nltk',
-        'numpy': 'numpy'
+        'numpy': 'numpy',
+        'python-dotenv': 'dotenv'
     }
     
     missing_optional = []
@@ -96,12 +111,19 @@ def validate_enterprise_environment(config):
             missing_optional.append(package_name)
     
     if missing_optional:
-        issues.append(f"⚠️  Optional ML packages missing: {', '.join(missing_optional)}")
+        issues.append(f"⚠️  Optional packages missing: {', '.join(missing_optional)}")
         issues.append(f"   For enhanced features: pip install {' '.join(missing_optional)}")
     
-    # Check Gemini API key
+    # Check Gemini API key with detailed guidance
     if not config['gemini_api_key']:
-        issues.append("⚠️  GEMINI_API_KEY not found - AI summarization will use fallback methods")
+        issues.append("⚠️  GEMINI_API_KEY not found")
+        issues.append("   Options to set it:")
+        issues.append("   1. Create a .env file with: GEMINI_API_KEY=your_api_key_here")
+        issues.append("   2. Set environment variable: export GEMINI_API_KEY=your_api_key_here")
+        issues.append("   3. Pass via command line: --gemini-key your_api_key_here")
+        issues.append("   AI summarization will use fallback methods without the key")
+    else:
+        issues.append("✅ GEMINI_API_KEY found - AI summarization enabled")
     
     return issues
 
@@ -289,6 +311,7 @@ def main():
     parser.add_argument('--analytics', action='store_true', help='Show detailed analytics')
     parser.add_argument('--reset-db', action='store_true', help='Reset database before running')
     parser.add_argument('--sources', nargs='+', help='List of sources to process')
+    parser.add_argument('--gemini-key', type=str, help='Gemini API key (overrides .env and environment variable)')
     
     args = parser.parse_args()
     
@@ -312,6 +335,9 @@ def main():
         config['gemini_api_key'] = None
     if args.sources:
         config['sources'] = args.sources
+    if args.gemini_key:
+        config['gemini_api_key'] = args.gemini_key
+        print(f"🔑 Using Gemini API key from command line argument")
     
     # Validate environment
     if not args.quiet:

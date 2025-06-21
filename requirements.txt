@@ -9,3 +9,4 @@ google-generativeai
 scikit-learn 
 sentence-transformers 
 nltk 
+python-dotenv

@@ -35,7 +35,7 @@ Rate Limiting: Integrated token bucket rate limiter to protect the API from abus
 
 Health Checks & Monitoring: Comprehensive /health endpoint and Prometheus metrics for system monitoring.
 
-Flexible Configuration: Easily manage pipeline behavior via pipeline_config.json and environment variables.
+Flexible Configuration: Easily manage pipeline behavior via pipeline_config.json, .env files, and environment variables.
 
 🏗️ Architecture Overview
 The project is composed of four main components:
@@ -66,34 +66,29 @@ source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
 pip install -r requirements.txt
 
-(You will need to create a requirements.txt file. See the suggestion below.)
-
-Suggested requirements.txt:
-
-# Core
-fastapi
-uvicorn[standard]
-requests
-beautifulsoup4
-pydantic
-
-# AI & ML
-google-generativeai
-scikit-learn
-sentence-transformers
-nltk
-numpy
-
-# API & Performance
-redis
-aiofiles
-prometheus-client
-
 4. Configure the Pipeline
-Create a file named pipeline_config.json in the root directory and add your configuration. Your Gemini API key is required for AI features.
+You have multiple options to configure the pipeline:
 
-pipeline_config.json Example:
+Option A: Using .env file (Recommended)
+Create a .env file in the root directory:
 
+```bash
+# Copy the example file
+cp env_example.txt .env
+
+# Edit .env with your actual values
+GEMINI_API_KEY=your_actual_gemini_api_key_here
+MAX_ARTICLES_PER_SOURCE=15
+MAX_WORKERS=3
+DB_PATH=news_pipeline.db
+OUTPUT_FILE=startup_news.json
+VERBOSE=true
+```
+
+Option B: Using pipeline_config.json
+Create a file named pipeline_config.json in the root directory:
+
+```json
 {
   "gemini_api_key": "YOUR_GEMINI_API_KEY_HERE",
   "max_articles_per_source": 25,
@@ -101,10 +96,23 @@ pipeline_config.json Example:
   "output_file": "startup_news_results.json",
   "verbose": true
 }
+```
 
-Alternatively, you can set the Gemini key as an environment variable:
+Option C: Using environment variables
+Set the Gemini key as an environment variable:
 
+```bash
 export GEMINI_API_KEY="YOUR_GEMINI_API_KEY_HERE"
+```
+
+Option D: Using command line arguments
+Pass the API key directly via command line:
+
+```bash
+python run_pipeline.py --gemini-key YOUR_API_KEY_HERE
+```
+
+Priority Order: Command line > .env file > environment variable > pipeline_config.json
 
 ▶️ How to Run
 Running the Pipeline via CLI
@@ -123,6 +131,12 @@ Optional Arguments:
 --analytics: Show detailed analytics after the run.
 
 --reset-db: Clear the database before running.
+
+--gemini-key <key>: Pass Gemini API key directly via command line.
+
+--no-ai: Skip AI summarization (use extractive methods only).
+
+--quiet: Minimal output mode.
 
 Running the API Server
 To start the FastAPI server, use uvicorn. This will make the API endpoints and WebSocket available.
@@ -171,6 +185,18 @@ WS
 /ws/{room}
 
 WebSocket endpoint for real-time updates.
+
+🔧 Environment Variables
+The following environment variables can be set in your .env file or system environment:
+
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| GEMINI_API_KEY | Google Gemini API key for AI summarization | None | Yes (for AI features) |
+| MAX_ARTICLES_PER_SOURCE | Maximum articles to scrape per source | 15 | No |
+| MAX_WORKERS | Number of concurrent workers | 3 | No |
+| DB_PATH | SQLite database path | news_pipeline.db | No |
+| OUTPUT_FILE | Output JSON filename | auto-generated | No |
+| VERBOSE | Enable verbose logging | true | No |
 
 🤝 Contributing
 Contributions are welcome! Please follow these steps:

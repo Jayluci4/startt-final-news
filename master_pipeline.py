@@ -25,6 +25,16 @@ import statistics
 import random
 import math
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    logger = logging.getLogger(__name__)
+    logger.info("Loaded environment variables from .env file")
+except ImportError:
+    logger = logging.getLogger(__name__)
+    logger.warning("python-dotenv not available - .env file support disabled")
+
 # Advanced imports with graceful fallbacks
 try:
     import google.generativeai as genai
@@ -954,7 +964,15 @@ class EnterpriseNewsPipeline:
     
     def __init__(self, gemini_api_key: str = None, db_path: str = "news_pipeline.db"):
         self.db_path = db_path
-        self.gemini_api_key = gemini_api_key or os.getenv('GEMINI_API_KEY')
+        
+        # Load Gemini API key with priority: parameter > environment variable > .env file
+        self.gemini_api_key = gemini_api_key
+        if not self.gemini_api_key:
+            self.gemini_api_key = os.getenv('GEMINI_API_KEY')
+            if self.gemini_api_key:
+                logger.info("Loaded GEMINI_API_KEY from environment variable")
+            else:
+                logger.warning("GEMINI_API_KEY not found in environment variables or .env file")
         
         # Initialize core components
         self.extractor = AdaptiveContentExtractor()
@@ -967,9 +985,14 @@ class EnterpriseNewsPipeline:
             try:
                 genai.configure(api_key=self.gemini_api_key)
                 self.ai_model = genai.GenerativeModel('gemini-2.0-flash')
-                logger.info("AI summarization enabled")
+                logger.info("✅ AI summarization enabled with Gemini")
             except Exception as e:
-                logger.error(f"Failed to initialize AI: {e}")
+                logger.error(f"❌ Failed to initialize AI: {e}")
+                logger.info("🔄 Falling back to extractive summarization")
+        elif not self.gemini_api_key:
+            logger.info("ℹ️  No Gemini API key provided - using extractive summarization")
+        elif not GEMINI_AVAILABLE:
+            logger.warning("⚠️  google-generativeai package not available - using extractive summarization")
         
         # Initialize database
         self._init_database()
