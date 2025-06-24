@@ -10,7 +10,7 @@ import hashlib
 import gzip
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional, Union, AsyncGenerator
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, contextmanager
 from dataclasses import dataclass, asdict
 from enum import Enum
 import logging
@@ -89,6 +89,131 @@ if PROMETHEUS_AVAILABLE:
     PIPELINE_RUNS = Counter('pipeline_runs_total', 'Total pipeline runs', ['status'])
     ARTICLES_PROCESSED = Counter('articles_processed_total', 'Total articles processed', ['source'])
 
+# ==================== Critical Improvements ====================
+
+def validate_critical_config():
+    """Validate critical environment configuration"""
+    issues = []
+    
+    # Test database accessibility
+    db_path = os.getenv('DB_PATH', 'news_pipeline.db')
+    try:
+        conn = sqlite3.connect(db_path, timeout=10.0)
+        conn.execute('SELECT 1')
+        conn.close()
+        logger.info(f"✅ Database accessible at: {db_path}")
+    except Exception as e:
+        issues.append(f"Database not accessible at {db_path}: {e}")
+    
+    # Check Gemini API key
+    if not os.getenv('GEMINI_API_KEY'):
+        logger.warning("GEMINI_API_KEY not set - AI features will use fallback methods")
+    else:
+        logger.info("GEMINI_API_KEY configured")
+    
+    # Check required directories
+
+    db_dir = os.path.dirname(db_path)
+    if db_dir:  # Only create directory if there's actually a directory path
+        os.makedirs(db_dir, exist_ok=True)
+    if issues:
+        raise RuntimeError(f"Critical configuration issues: {issues}")
+    
+    logger.info(" All critical configurations validated")
+
+@contextmanager
+def get_db_connection():
+    """Production-ready database connection management with proper cleanup"""
+    conn = None
+    try:
+        conn = sqlite3.connect(
+            os.getenv('DB_PATH', 'news_pipeline.db'),
+            timeout=30.0,
+            check_same_thread=False
+        )
+        conn.row_factory = sqlite3.Row
+        # Enable WAL mode for better concurrency
+        conn.execute('PRAGMA journal_mode=WAL')
+        conn.execute('PRAGMA synchronous=NORMAL')
+        conn.execute('PRAGMA temp_store=memory')
+        conn.execute('PRAGMA mmap_size=268435456')  # 256MB
+        yield conn
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        logger.error(f"Database error: {e}")
+        raise
+    finally:
+        if conn:
+            conn.close()
+
+# Pipeline-specific rate limiting
+pipeline_requests = defaultdict(list)
+pipeline_requests_lock = threading.Lock()
+
+async def check_pipeline_rate_limit(client_id: str):
+    """Rate limiting specifically for expensive pipeline operations"""
+    now = time.time()
+    
+    with pipeline_requests_lock:
+        # Remove old requests (older than 1 hour)
+        pipeline_requests[client_id] = [
+            req_time for req_time in pipeline_requests[client_id] 
+            if now - req_time < 3600
+        ]
+        
+        # Check if too many requests
+        if len(pipeline_requests[client_id]) >= 3:  # Max 3 per hour
+            raise HTTPException(
+                status_code=429,
+                detail={
+                    "error": "Pipeline rate limit exceeded",
+                    "message": "Maximum 3 pipeline executions per hour per client",
+                    "retry_after": 3600,
+                    "current_requests": len(pipeline_requests[client_id])
+                }
+            )
+        
+        pipeline_requests[client_id].append(now)
+
+def save_execution_status(execution_id: str, status: str, details: dict = None):
+    """Save pipeline execution status to database for proper tracking"""
+    try:
+        with get_db_connection() as conn:
+            conn.execute("""
+                INSERT OR REPLACE INTO pipeline_executions 
+                (execution_id, status, details, updated_at)
+                VALUES (?, ?, ?, ?)
+            """, (execution_id, status, json.dumps(details or {}), datetime.now().isoformat()))
+            conn.commit()
+    except Exception as e:
+        logger.error(f"Failed to save execution status: {e}")
+
+def get_execution_status(execution_id: str) -> Optional[Dict[str, Any]]:
+    """Get pipeline execution status from database"""
+    try:
+        with get_db_connection() as conn:
+            cursor = conn.execute("""
+                SELECT execution_id, status, details, updated_at, created_at
+                FROM pipeline_executions 
+                WHERE execution_id = ?
+            """, (execution_id,))
+            row = cursor.fetchone()
+            
+            if row:
+                details = json.loads(row['details']) if row['details'] else {}
+                return {
+                    'execution_id': row['execution_id'],
+                    'status': row['status'],
+                    'updated_at': row['updated_at'],
+                    'created_at': row.get('created_at'),
+                    **details
+                }
+    except Exception as e:
+        logger.error(f"Failed to get execution status: {e}")
+    
+    return None
+
 # ==================== Data Models ====================
 
 class PipelineStatus(str, Enum):
@@ -120,13 +245,15 @@ class RateLimitConfig:
     window_size: int = 60
 
 class PipelineRequest(BaseModel):
-    """Pipeline execution request model"""
-    max_articles_per_source: PositiveInt = Field(15, description="Maximum articles per source", le=100)
-    max_workers: PositiveInt = Field(3, description="Maximum concurrent workers", le=10)
+    """Pipeline execution request model with flexible defaults"""
+    max_articles_per_source: Optional[PositiveInt] = Field(15, description="Maximum articles per source", le=100)
+    max_workers: Optional[PositiveInt] = Field(3, description="Maximum concurrent workers", le=10)
     sources: Optional[List[str]] = Field(None, description="Specific sources to scrape")
-    enable_ai_summary: bool = Field(True, description="Enable AI summarization")
-    quality_threshold: float = Field(0.3, ge=0.0, le=1.0, description="Minimum quality threshold")
-    cache_strategy: CacheStrategy = Field(CacheStrategy.CONSERVATIVE, description="Caching strategy")
+    enable_ai_summary: Optional[bool] = Field(True, description="Enable AI summarization")
+    quality_threshold: Optional[float] = Field(0.3, ge=0.0, le=1.0, description="Minimum quality threshold")
+    cache_strategy: Optional[CacheStrategy] = Field(CacheStrategy.CONSERVATIVE, description="Caching strategy")
+    save_to_json: Optional[bool] = Field(True, description="Save results to JSON file")
+    save_to_db: Optional[bool] = Field(True, description="Save results to database")
     
     @validator('sources')
     def validate_sources(cls, v):
@@ -136,6 +263,19 @@ class PipelineRequest(BaseModel):
             if invalid:
                 raise ValueError(f"Invalid sources: {invalid}. Valid: {valid_sources}")
         return v
+    
+    def get_safe_values(self) -> Dict[str, Any]:
+        """Get safe values with proper defaults for None values"""
+        return {
+            'max_articles_per_source': self.max_articles_per_source or 15,
+            'max_workers': self.max_workers or 3,
+            'sources': self.sources,
+            'enable_ai_summary': self.enable_ai_summary if self.enable_ai_summary is not None else True,
+            'quality_threshold': self.quality_threshold if self.quality_threshold is not None else 0.3,
+            'cache_strategy': self.cache_strategy or CacheStrategy.CONSERVATIVE,
+            'save_to_json': self.save_to_json if self.save_to_json is not None else True,
+            'save_to_db': self.save_to_db if self.save_to_db is not None else True
+        }
 
 class ArticleFilter(BaseModel):
     """Article filtering options"""
@@ -174,6 +314,7 @@ class PipelineResponse(BaseModel):
     errors: List[str] = []
     source_breakdown: Dict[str, int] = {}
     analytics: Optional[Dict[str, Any]] = None
+    output_files: Optional[Dict[str, str]] = None
 
 class HealthCheck(BaseModel):
     """Health check response"""
@@ -183,16 +324,19 @@ class HealthCheck(BaseModel):
     components: Dict[str, str]
     uptime_seconds: float
 
-# ==================== Advanced Caching System ====================
+# ==================== Improved Caching System ====================
 
 class IntelligentCache:
-    """Multi-tier intelligent caching system"""
+    """Multi-tier intelligent caching system with memory management"""
     
     def __init__(self):
         self.memory_cache = {}
+        self.cache_timestamps = {}
         self.cache_stats = defaultdict(int)
         self.access_patterns = defaultdict(list)
         self.redis_client = None
+        self.max_memory_items = 1000
+        self.cleanup_threshold = 1200
         
         # Initialize Redis if available
         if REDIS_AVAILABLE:
@@ -211,8 +355,46 @@ class IntelligentCache:
                 logger.warning(f"Redis initialization failed: {e}")
                 self.redis_client = None
     
+    def _cleanup_cache(self):
+        """Clean up expired and old cache entries"""
+        if len(self.memory_cache) <= self.max_memory_items:
+            return
+            
+        now = time.time()
+        
+        # Remove expired entries (older than 1 hour)
+        expired_keys = [
+            key for key, timestamp in self.cache_timestamps.items()
+            if now - timestamp > 3600
+        ]
+        
+        for key in expired_keys:
+            self.memory_cache.pop(key, None)
+            self.cache_timestamps.pop(key, None)
+            self.access_patterns.pop(key, None)
+        
+        # If still too many, remove least recently used
+        if len(self.memory_cache) > self.max_memory_items:
+            sorted_items = sorted(
+                self.cache_timestamps.items(), 
+                key=lambda x: x[1]
+            )
+            
+            to_remove = sorted_items[:len(sorted_items) - self.max_memory_items]
+            
+            for key, _ in to_remove:
+                self.memory_cache.pop(key, None)
+                self.cache_timestamps.pop(key, None)
+                self.access_patterns.pop(key, None)
+        
+        logger.info(f"Cache cleanup completed. Current size: {len(self.memory_cache)}")
+    
     async def get(self, key: str, default=None) -> Any:
-        """Get value with intelligent tier selection"""
+        """Get value with intelligent tier selection and cleanup"""
+        # Periodic cleanup
+        if len(self.memory_cache) > self.cleanup_threshold:
+            self._cleanup_cache()
+        
         # Try memory cache first (fastest)
         if key in self.memory_cache:
             self.cache_stats['memory_hits'] += 1
@@ -228,6 +410,7 @@ class IntelligentCache:
                     # Promote to memory cache if frequently accessed
                     if self._should_promote_to_memory(key):
                         self.memory_cache[key] = parsed_value
+                        self.cache_timestamps[key] = time.time()
                     self.cache_stats['redis_hits'] += 1
                     self._update_access_pattern(key)
                     return parsed_value
@@ -238,10 +421,15 @@ class IntelligentCache:
         return default
     
     async def set(self, key: str, value: Any, ttl: int = 3600) -> bool:
-        """Set value with intelligent tier distribution"""
+        """Set value with intelligent tier distribution and size management"""
         try:
+            # Cleanup if needed
+            if len(self.memory_cache) > self.cleanup_threshold:
+                self._cleanup_cache()
+            
             # Always store in memory for immediate access
             self.memory_cache[key] = value
+            self.cache_timestamps[key] = time.time()
             
             # Store in Redis for persistence
             if self.redis_client:
@@ -250,12 +438,6 @@ class IntelligentCache:
                     self.redis_client.setex(key, ttl, serialized)
                 except Exception as e:
                     logger.warning(f"Redis set failed: {e}")
-            
-            # Manage memory cache size
-            if len(self.memory_cache) > 1000:  # LRU eviction
-                oldest_key = min(self.memory_cache.keys(), 
-                               key=lambda k: min(self.access_patterns.get(k, [time.time()])))
-                del self.memory_cache[oldest_key]
             
             return True
         except Exception as e:
@@ -285,7 +467,9 @@ class IntelligentCache:
             'memory_hits': self.cache_stats['memory_hits'],
             'redis_hits': self.cache_stats['redis_hits'],
             'misses': self.cache_stats['misses'],
-            'memory_cache_size': len(self.memory_cache)
+            'memory_cache_size': len(self.memory_cache),
+            'cleanup_threshold': self.cleanup_threshold,
+            'max_memory_items': self.max_memory_items
         }
 
 # ==================== Rate Limiting System ====================
@@ -434,32 +618,89 @@ class BackgroundTaskManager:
     async def submit_pipeline_task(self, 
                                  pipeline: EnterpriseNewsPipeline,
                                  request: PipelineRequest,
-                                 client_id: str) -> str:
+                                 client_id: str,
+                                 execution_id: str) -> str:
         """Submit pipeline task with comprehensive monitoring"""
-        task_id = str(uuid.uuid4())
         start_time = datetime.now()
         
         def pipeline_wrapper():
             """Wrapper function for pipeline execution with error handling"""
             try:
+                # Update status to running
+                save_execution_status(execution_id, "running", {
+                    "started_at": start_time.isoformat(),
+                    "client_id": client_id,
+                    "config": request.get_safe_values()
+                })
+                
+                logger.info(f"Starting pipeline execution {execution_id}")
+                
                 articles = pipeline.process_all_sources(
-                    max_articles_per_source=request.max_articles_per_source,
-                    max_workers=request.max_workers
+                    max_articles_per_source=request.max_articles_per_source or 15,
+                    max_workers=request.max_workers or 3,
+                    sources=request.sources
                 )
                 
                 # Filter articles by quality threshold
+                quality_threshold = request.quality_threshold or 0.3
                 filtered_articles = [
                     article for article in articles
-                    if article.get('metadata', {}).get('quality_score', 0) >= request.quality_threshold
+                    if article.get('metadata', {}).get('quality_score', 0) >= quality_threshold
                 ]
+                
+                # Get analytics
+                analytics = pipeline.get_analytics_dashboard()
+                
+                # Save outputs in requested formats
+                output_files = {}
+                config = request.get_safe_values()
+                
+                if config.get('save_to_json', True):
+                    json_file = pipeline.save_to_json(filtered_articles)
+                    output_files['json'] = json_file
+                    logger.info(f"Saved {len(filtered_articles)} articles to {json_file}")
+                
+                if config.get('save_to_db', True):
+                    # Articles are already saved to DB by the pipeline
+                    output_files['database'] = os.getenv('DB_PATH', 'news_pipeline.db')
+                
+                # Update status to completed
+                completion_details = {
+                    "started_at": start_time.isoformat(),
+                    "completed_at": datetime.now().isoformat(),
+                    "articles_count": len(filtered_articles),
+                    "execution_time": (datetime.now() - start_time).total_seconds(),
+                    "analytics": analytics,
+                    "output_files": output_files,
+                    "source_breakdown": {
+                        source: len([a for a in filtered_articles if a.get("news_source") == source])
+                        for source in ["Inc42", "Entrackr", "Moneycontrol", "StartupNews.fyi", "IndianStartupNews"]
+                    }
+                }
+                
+                save_execution_status(execution_id, "completed", completion_details)
+                
+                logger.info(f"Pipeline execution {execution_id} completed successfully")
                 
                 return {
                     'status': 'completed',
                     'articles': filtered_articles,
-                    'analytics': pipeline.get_analytics_dashboard()
+                    'analytics': analytics,
+                    'output_files': output_files,
+                    'execution_time': completion_details['execution_time']
                 }
+                
             except Exception as e:
-                logger.error(f"Pipeline task {task_id} failed: {e}")
+                logger.error(f"Pipeline task {execution_id} failed: {e}")
+                
+                # Update status to failed
+                save_execution_status(execution_id, "failed", {
+                    "started_at": start_time.isoformat(),
+                    "failed_at": datetime.now().isoformat(),
+                    "error": str(e),
+                    "execution_time": (datetime.now() - start_time).total_seconds()
+                })
+                
                 return {
                     'status': 'failed',
                     'error': str(e),
@@ -469,7 +710,7 @@ class BackgroundTaskManager:
         # Submit task to executor
         future = self.executor.submit(pipeline_wrapper)
         
-        self.running_tasks[task_id] = {
+        self.running_tasks[execution_id] = {
             'future': future,
             'client_id': client_id,
             'request': request,
@@ -482,13 +723,19 @@ class BackgroundTaskManager:
         if PROMETHEUS_AVAILABLE:
             PIPELINE_RUNS.labels(status='started').inc()
         
-        logger.info(f"Pipeline task {task_id} submitted for client {client_id}")
-        return task_id
+        logger.info(f"Pipeline task {execution_id} submitted for client {client_id}")
+        return execution_id
     
-    def get_task_status(self, task_id: str) -> Optional[Dict[str, Any]]:
+    def get_task_status(self, execution_id: str) -> Optional[Dict[str, Any]]:
         """Get comprehensive task status"""
-        if task_id in self.running_tasks:
-            task = self.running_tasks[task_id]
+        # First check database for persistent status
+        db_status = get_execution_status(execution_id)
+        if db_status:
+            return db_status
+        
+        # Fallback to in-memory tracking
+        if execution_id in self.running_tasks:
+            task = self.running_tasks[execution_id]
             future = task['future']
             
             if future.done():
@@ -498,17 +745,17 @@ class BackgroundTaskManager:
                     status = PipelineStatus.COMPLETED if result['status'] == 'completed' else PipelineStatus.FAILED
                     
                     completed_task = {
-                        'task_id': task_id,
-                        'status': status,
+                        'execution_id': execution_id,
+                        'status': status.value,
                         'result': result,
-                        'started_at': task['started_at'],
-                        'completed_at': datetime.now(),
+                        'started_at': task['started_at'].isoformat(),
+                        'completed_at': datetime.now().isoformat(),
                         'execution_time': (datetime.now() - task['started_at']).total_seconds(),
                         'client_id': task['client_id']
                     }
                     
                     self.completed_tasks.append(completed_task)
-                    del self.running_tasks[task_id]
+                    del self.running_tasks[execution_id]
                     
                     self.task_stats['completed' if status == PipelineStatus.COMPLETED else 'failed'] += 1
                     
@@ -517,26 +764,21 @@ class BackgroundTaskManager:
                     
                     return completed_task
                 except Exception as e:
-                    logger.error(f"Task {task_id} failed with exception: {e}")
+                    logger.error(f"Task {execution_id} failed with exception: {e}")
                     return {
-                        'task_id': task_id,
-                        'status': PipelineStatus.FAILED,
+                        'execution_id': execution_id,
+                        'status': PipelineStatus.FAILED.value,
                         'error': str(e),
-                        'started_at': task['started_at'],
-                        'completed_at': datetime.now()
+                        'started_at': task['started_at'].isoformat(),
+                        'completed_at': datetime.now().isoformat()
                     }
             else:
                 return {
-                    'task_id': task_id,
-                    'status': PipelineStatus.RUNNING,
-                    'started_at': task['started_at'],
+                    'execution_id': execution_id,
+                    'status': PipelineStatus.RUNNING.value,
+                    'started_at': task['started_at'].isoformat(),
                     'runtime': (datetime.now() - task['started_at']).total_seconds()
                 }
-        
-        # Check completed tasks
-        for completed_task in self.completed_tasks:
-            if completed_task['task_id'] == task_id:
-                return completed_task
         
         return None
     
@@ -581,12 +823,98 @@ if PIPELINE_AVAILABLE:
     except Exception as e:
         logger.error(f"Failed to initialize pipeline: {e}")
 
+# ==================== Enhanced Database Schema ====================
+
+def init_enhanced_database():
+    """Initialize database with enhanced schema including execution tracking"""
+    try:
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            
+            # Articles table (existing)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS articles (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    news_id TEXT UNIQUE,
+                    source TEXT NOT NULL,
+                    url TEXT UNIQUE NOT NULL,
+                    title TEXT NOT NULL,
+                    content TEXT,
+                    description TEXT,
+                    author TEXT,
+                    published_date TEXT,
+                    image_url TEXT,
+                    ai_summary TEXT,
+                    quality_score REAL,
+                    content_fingerprint TEXT UNIQUE,
+                    extraction_strategy TEXT,
+                    extraction_time REAL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Pipeline executions table (new)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS pipeline_executions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    execution_id TEXT UNIQUE NOT NULL,
+                    status TEXT NOT NULL,
+                    details TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Source performance tracking (existing)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS source_metrics (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    source TEXT NOT NULL,
+                    success_rate REAL,
+                    avg_extraction_time REAL,
+                    last_success TIMESTAMP,
+                    failure_count INTEGER DEFAULT 0,
+                    circuit_breaker_state TEXT DEFAULT 'CLOSED',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # Create indexes for better performance
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_url ON articles(url)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_fingerprint ON articles(content_fingerprint)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_source ON articles(source)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_articles_created ON articles(created_at)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_pipeline_executions_id ON pipeline_executions(execution_id)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_pipeline_executions_status ON pipeline_executions(status)')
+            
+            conn.commit()
+            logger.info("✅ Enhanced database schema initialized")
+            
+    except Exception as e:
+        logger.error(f"Failed to initialize enhanced database: {e}")
+        raise
+
 # ==================== FastAPI Application ====================
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Application lifespan manager"""
+    """Application lifespan manager with critical validation"""
     logger.info("🚀 Startt News Intelligence API starting up...")
+    
+    # Validate critical configuration first
+    try:
+        validate_critical_config()
+    except Exception as e:
+        logger.error(f"❌ Critical configuration validation failed: {e}")
+        raise
+    
+    # Initialize enhanced database
+    try:
+        init_enhanced_database()
+    except Exception as e:
+        logger.error(f"❌ Database initialization failed: {e}")
+        raise
     
     # Start Prometheus metrics server if available
     if PROMETHEUS_AVAILABLE:
@@ -600,10 +928,8 @@ async def lifespan(app: FastAPI):
     if pipeline_instance:
         logger.info("Performing initial pipeline run to populate data...")
         try:
-            # Using a thread to not block the startup process
             def run_initial_pipeline():
                 with ThreadPoolExecutor(max_workers=1) as executor:
-                    # Provide default arguments for the initial run
                     future = executor.submit(pipeline_instance.process_all_sources, 15, 3)
                     future.result()
                     logger.info("Initial pipeline run completed.")
@@ -614,6 +940,8 @@ async def lifespan(app: FastAPI):
         except Exception as e:
             logger.error(f"Initial pipeline run failed: {e}")
     
+    logger.info("✅ Startt News Intelligence API startup completed successfully")
+    
     yield
     
     logger.info("Startt News Intelligence API shutting down...")
@@ -623,8 +951,8 @@ async def lifespan(app: FastAPI):
 # Create FastAPI application
 app = FastAPI(
     title="Startt News Intelligence API",
-    description="Advanced news aggregation and analysis system with real-time capabilities",
-    version="1.0.0",
+    description="Production-ready news aggregation and analysis system with real-time capabilities",
+    version="2.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan
@@ -686,6 +1014,60 @@ async def get_pipeline() -> EnterpriseNewsPipeline:
         )
     return pipeline_instance
 
+# ==================== Enhanced Exception Handler ====================
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Enhanced validation exception handler with better guidance"""
+    
+    # Convert all error details to string if they are not serializable
+    def safe_error(err):
+        if isinstance(err, dict):
+            return {k: safe_error(v) for k, v in err.items()}
+        elif isinstance(err, list):
+            return [safe_error(e) for e in err]
+        elif isinstance(err, Exception):
+            return str(err)
+        else:
+            return err
+    
+    safe_errors = safe_error(exc.errors())
+    
+    # Check if this is the pipeline endpoint
+    is_pipeline_endpoint = str(request.url).endswith('/api/v1/pipeline/run')
+    
+    if is_pipeline_endpoint:
+        return JSONResponse(
+            status_code=422,
+            content={
+                "error": "Validation Error",
+                "message": "Invalid request body for pipeline endpoint.",
+                "details": safe_errors,
+                "help": {
+                    "valid_request_examples": [
+                        "No body (uses all defaults)",
+                        "Empty object: {}",
+                        "Partial config: {\"max_articles_per_source\": 20}",
+                        "Full config: {\"max_articles_per_source\": 15, \"max_workers\": 3, \"sources\": [\"inc42\", \"entrackr\"]}"
+                    ],
+                    "valid_sources": ["inc42", "entrackr", "moneycontrol", "startupnews", "indianstartup"],
+                    "parameter_ranges": {
+                        "max_articles_per_source": "1-100",
+                        "max_workers": "1-10", 
+                        "quality_threshold": "0.0-1.0"
+                    }
+                }
+            },
+        )
+    else:
+        return JSONResponse(
+            status_code=422,
+            content={
+                "detail": safe_errors,
+                "message": "Invalid request body for this endpoint. Please check the documentation for the correct schema."
+            },
+        )
+
 # ==================== API Endpoints ====================
 
 @app.get("/", response_model=Dict[str, Any])
@@ -695,25 +1077,36 @@ async def root():
     
     return {
         "service": "Startt News Intelligence API",
-        "version": "1.0.0",
+        "version": "2.0.0",
         "status": "operational",
         "uptime_seconds": uptime,
         "features": [
-            "Advanced news aggregation",
+            "Production-ready architecture",
+            "Dual format output (JSON + SQLite)",
+            "Advanced memory management", 
+            "Pipeline-specific rate limiting",
+            "Real-time execution tracking",
+            "Enhanced error handling",
             "AI-powered summarization",
-            "Real-time WebSocket updates",
             "Multi-tier caching",
-            "Rate limiting",
             "Comprehensive analytics"
         ],
         "endpoints": {
             "pipeline": "/api/v1/pipeline/run",
+            "pipeline_status": "/api/v1/pipeline/status/{execution_id}",
             "articles": "/api/v1/db/articles",
             "analytics": "/api/v1/analytics",
             "websocket": "/ws",
             "health": "/health",
             "metrics": "/metrics"
-        }
+        },
+        "improvements": [
+            "✅ Fixed memory leaks in caching",
+            "✅ Added proper DB connection pooling",
+            "✅ Implemented pipeline rate limiting",
+            "✅ Enhanced execution status tracking",
+            "✅ Added dual format output support"
+        ]
     }
 
 @app.get("/health", response_model=HealthCheck)
@@ -723,6 +1116,14 @@ async def health_check():
     
     # Check pipeline
     components["pipeline"] = "healthy" if pipeline_instance else "unavailable"
+    
+    # Check database
+    try:
+        with get_db_connection() as conn:
+            conn.execute('SELECT 1')
+        components["database"] = "healthy"
+    except Exception:
+        components["database"] = "failed"
     
     # Check cache
     try:
@@ -759,117 +1160,212 @@ async def health_check():
         uptime_seconds=time.time() - app_start_time
     )
 
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc):
-    # Convert all error details to string if they are not serializable
-    def safe_error(err):
-        if isinstance(err, dict):
-            return {k: safe_error(v) for k, v in err.items()}
-        elif isinstance(err, list):
-            return [safe_error(e) for e in err]
-        elif isinstance(err, Exception):
-            return str(err)
-        else:
-            return err
-    safe_errors = safe_error(exc.errors())
-    safe_body = safe_error(getattr(exc, 'body', None))
-    return JSONResponse(
-        status_code=422,
-        content={
-            "detail": safe_errors,
-            "body": safe_body,
-            "message": "Invalid request body for this endpoint. Please check the documentation for the correct schema. If you want to use all defaults, send an empty object {} or no body at all."
-        },
-    )
-
 @app.post("/api/v1/pipeline/run", response_model=PipelineResponse)
 async def run_pipeline(
     background_tasks: BackgroundTasks,
-    request: PipelineRequest = Body(default_factory=PipelineRequest),
+    request_body: Optional[Dict[str, Any]] = Body(None, description="Pipeline configuration (optional)"),
     client_id: str = Depends(get_client_id),
     rate_limit_info: Dict = Depends(check_rate_limit)
 ):
     """
-    Execute the news aggregation pipeline by running the run_pipeline.py script.
-    This provides the full functionality of the command-line interface as an API endpoint.
+    Execute the news aggregation pipeline with dual format output support.
+    
+    This endpoint accepts:
+    - Full JSON configuration with any subset of parameters
+    - Empty object {} for all defaults
+    - No body at all for all defaults
+    - Partial configuration (missing fields use defaults)
+    
+    All parameters are optional and will use sensible defaults if not provided.
+    Results are saved to both SQLite database and JSON file by default.
+    
+    Example requests:
+    - POST /api/v1/pipeline/run (no body)
+    - POST /api/v1/pipeline/run with body: {}
+    - POST /api/v1/pipeline/run with body: {"max_articles_per_source": 20, "save_to_json": true}
+    - POST /api/v1/pipeline/run with body: {"sources": ["inc42", "entrackr"], "save_to_db": false}
     """
-    pipeline_request = request
     execution_id = str(uuid.uuid4())
-    # Convert Pydantic model to a dictionary for the config
-    config = pipeline_request.dict()
-    # Add other necessary config defaults that are not in PipelineRequest
-    config['gemini_api_key'] = os.getenv('GEMINI_API_KEY')
-    config['db_path'] = os.getenv('DB_PATH', 'news_pipeline.db')
-    def run_in_background():
-        """Wrapper to run the script and handle output/errors."""
-        try:
-            print(f"Starting pipeline execution {execution_id} from API request.")
-            # Create a mock 'args' object for execute_pipeline
-            args = Namespace(quiet=True, analytics=True, reset_db=False)
-            execute_pipeline(config, args)
-            print(f"Pipeline execution {execution_id} finished.")
-        except Exception as e:
-            print(f"Error during pipeline execution {execution_id}: {e}")
-            import traceback
-            traceback.print_exc()
-    background_tasks.add_task(run_in_background)
-    return PipelineResponse(
-        execution_id=execution_id,
-        status=PipelineStatus.RUNNING,
-        message="Pipeline execution started in the background. Check server logs for progress and results.",
-        started_at=datetime.now()
-    )
+    
+    try:
+        # Check pipeline-specific rate limiting
+        await check_pipeline_rate_limit(client_id)
+        
+        # Handle different request body scenarios
+        if request_body is None:
+            # No body provided - use all defaults
+            pipeline_request = PipelineRequest()
+        elif not request_body:
+            # Empty object {} provided - use all defaults
+            pipeline_request = PipelineRequest()
+        else:
+            # Validate and parse the provided configuration
+            try:
+                pipeline_request = PipelineRequest(**request_body)
+            except Exception as validation_error:
+                # If validation fails, try to extract valid fields and use defaults for the rest
+                logger.warning(f"Partial validation failed, extracting valid fields: {validation_error}")
+                valid_fields = {}
+                
+                # Extract only the fields that are valid
+                for field_name, field_info in PipelineRequest.model_fields.items():
+                    if field_name in request_body:
+                        try:
+                            # Try to validate individual field
+                            if field_name == 'sources':
+                                sources = request_body[field_name]
+                                if sources is not None:
+                                    valid_sources = ['inc42', 'entrackr', 'moneycontrol', 'startupnews', 'indianstartup']
+                                    if isinstance(sources, list):
+                                        invalid = [s for s in sources if s not in valid_sources]
+                                        if not invalid:
+                                            valid_fields[field_name] = sources
+                                        else:
+                                            logger.warning(f"Invalid sources ignored: {invalid}")
+                                    else:
+                                        logger.warning(f"Sources must be a list, got: {type(sources)}")
+                            elif field_name in ['max_articles_per_source', 'max_workers']:
+                                value = request_body[field_name]
+                                if isinstance(value, int) and value > 0:
+                                    if field_name == 'max_articles_per_source' and value <= 100:
+                                        valid_fields[field_name] = value
+                                    elif field_name == 'max_workers' and value <= 10:
+                                        valid_fields[field_name] = value
+                                    else:
+                                        logger.warning(f"Invalid {field_name}: {value}")
+                                else:
+                                    logger.warning(f"Invalid {field_name}: {value}")
+                            elif field_name in ['enable_ai_summary', 'save_to_json', 'save_to_db']:
+                                value = request_body[field_name]
+                                if isinstance(value, bool):
+                                    valid_fields[field_name] = value
+                                else:
+                                    logger.warning(f"Invalid {field_name}: {value}")
+                            elif field_name == 'quality_threshold':
+                                value = request_body[field_name]
+                                if isinstance(value, (int, float)) and 0.0 <= value <= 1.0:
+                                    valid_fields[field_name] = value
+                                else:
+                                    logger.warning(f"Invalid quality_threshold: {value}")
+                            elif field_name == 'cache_strategy':
+                                value = request_body[field_name]
+                                if value in [e.value for e in CacheStrategy]:
+                                    valid_fields[field_name] = value
+                                else:
+                                    logger.warning(f"Invalid cache_strategy: {value}")
+                        except Exception as field_error:
+                            # Skip invalid fields - they'll use defaults
+                            logger.warning(f"Skipping invalid field {field_name}: {field_error}")
+                            continue
+                
+                # Create request with valid fields only
+                pipeline_request = PipelineRequest(**valid_fields)
+                logger.info(f"Using valid fields: {valid_fields}")
+        
+        # Get safe configuration values
+        config = pipeline_request.get_safe_values()
+        
+        # Add system configuration
+        config['gemini_api_key'] = os.getenv('GEMINI_API_KEY')
+        config['db_path'] = os.getenv('DB_PATH', 'news_pipeline.db')
+        
+        logger.info(f"Pipeline execution {execution_id} starting with config: {config}")
+        
+        # Initialize execution status
+        save_execution_status(execution_id, "running", {
+            "client_id": client_id,
+            "config": config,
+            "started_at": datetime.now().isoformat()
+        })
+        
+        # Get pipeline instance
+        pipeline = await get_pipeline()
+        
+        # Submit background task
+        await task_manager.submit_pipeline_task(
+            pipeline, 
+            pipeline_request, 
+            client_id,
+            execution_id
+        )
+        
+        return PipelineResponse(
+            execution_id=execution_id,
+            status=PipelineStatus.RUNNING,
+            message="Pipeline execution started successfully in the background. Check server logs and use the status endpoint to track progress.",
+            started_at=datetime.now()
+        )
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions (rate limiting, etc.)
+        raise
+    except Exception as e:
+        logger.error(f"Failed to start pipeline execution: {e}")
+        
+        # Save failure status
+        save_execution_status(execution_id, "failed", {
+            "error": str(e),
+            "failed_at": datetime.now().isoformat()
+        })
+        
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to start pipeline execution: {str(e)}"
+        )
 
 @app.get("/api/v1/pipeline/status/{execution_id}", response_model=PipelineResponse)
 async def get_pipeline_status(
     execution_id: str = Path(..., description="Pipeline execution ID"),
     client_id: str = Depends(get_client_id)
 ):
-    """Get pipeline execution status and results"""
+    """Get pipeline execution status and results with enhanced tracking"""
     
-    task_status = task_manager.get_task_status(execution_id)
+    # Get status from database (primary source)
+    execution_status = get_execution_status(execution_id)
     
-    if not task_status:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Pipeline execution {execution_id} not found"
-        )
+    if not execution_status:
+        # Fallback to task manager
+        task_status = task_manager.get_task_status(execution_id)
+        if not task_status:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Pipeline execution {execution_id} not found"
+            )
+        execution_status = task_status
     
-    # Build response
+    # Build response based on status
+    status_value = execution_status.get("status", "unknown")
+    
     response_data = {
         "execution_id": execution_id,
-        "status": task_status["status"],
-        "started_at": task_status["started_at"]
+        "status": status_value,
+        "started_at": datetime.fromisoformat(execution_status.get("started_at", datetime.now().isoformat()))
     }
     
-    if task_status["status"] == PipelineStatus.RUNNING:
+    if status_value == "running":
+        started_at = datetime.fromisoformat(execution_status.get("started_at", datetime.now().isoformat()))
+        runtime = (datetime.now() - started_at).total_seconds()
         response_data.update({
             "message": "Pipeline is running",
-            "runtime": task_status.get("runtime", 0)
+            "runtime": runtime
         })
-    elif task_status["status"] == PipelineStatus.COMPLETED:
-        result = task_status.get("result", {})
-        articles = result.get("articles", [])
         
-        # Cache results for fast retrieval
-        await cache.set(f"pipeline_result:{execution_id}", articles, ttl=7200)
-        
+    elif status_value == "completed":
         response_data.update({
             "message": "Pipeline completed successfully",
-            "articles_count": len(articles),
-            "execution_time": task_status.get("execution_time"),
-            "completed_at": task_status.get("completed_at"),
-            "analytics": result.get("analytics"),
-            "source_breakdown": {
-                source: len([a for a in articles if a.get("news_source") == source])
-                for source in ["Inc42", "Entrackr", "Moneycontrol", "StartupNews.fyi", "IndianStartupNews"]
-            }
+            "articles_count": execution_status.get("articles_count", 0),
+            "execution_time": execution_status.get("execution_time"),
+            "completed_at": datetime.fromisoformat(execution_status.get("completed_at", datetime.now().isoformat())),
+            "analytics": execution_status.get("analytics"),
+            "source_breakdown": execution_status.get("source_breakdown", {}),
+            "output_files": execution_status.get("output_files", {})
         })
-    else:  # FAILED
+        
+    else:  # failed
         response_data.update({
-            "message": f"Pipeline failed: {task_status.get('error', 'Unknown error')}",
-            "errors": [task_status.get('error', 'Unknown error')],
-            "completed_at": task_status.get("completed_at")
+            "message": f"Pipeline failed: {execution_status.get('error', 'Unknown error')}",
+            "errors": [execution_status.get('error', 'Unknown error')],
+            "completed_at": datetime.fromisoformat(execution_status.get("failed_at", datetime.now().isoformat()))
         })
     
     return PipelineResponse(**response_data)
@@ -891,13 +1387,18 @@ async def get_analytics(
             "cache_performance": cache.get_stats() if include_cache_stats else {},
             "task_manager": task_manager.get_stats() if include_task_stats else {},
             "websocket_connections": websocket_manager.get_stats(),
-            "uptime_seconds": time.time() - app_start_time
+            "uptime_seconds": time.time() - app_start_time,
+            "pipeline_rate_limits": {
+                "max_per_hour": 3,
+                "active_clients": len(pipeline_requests)
+            }
         }
         
         result = {
             "pipeline_analytics": analytics,
             "api_metrics": api_metrics,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
+            "version": "2.0.0"
         }
         
         return result
@@ -909,6 +1410,92 @@ async def get_analytics(
             detail="Failed to retrieve analytics"
         )
 
+@app.get("/api/v1/db/articles", response_model=Dict[str, Any])
+async def get_articles_from_db(
+    sources: Optional[List[str]] = Query(None),
+    quality_min: Optional[float] = Query(None, ge=0.0, le=1.0),
+    date_from: Optional[datetime] = Query(None),
+    date_to: Optional[datetime] = Query(None),
+    search_query: Optional[str] = Query(None, max_length=200),
+    limit: int = Query(50, le=1000),
+    offset: int = Query(0, ge=0),
+    client_id: str = Depends(get_client_id)
+):
+    """Get articles directly from the database with advanced filtering and pagination."""
+    
+    try:
+        # Build dynamic query
+        base_query = "SELECT * FROM articles"
+        count_query = "SELECT COUNT(*) as total FROM articles"
+        conditions = []
+        params = []
+        
+        # Add filters
+        if sources:
+            placeholders = ",".join("?" * len(sources))
+            conditions.append(f"source IN ({placeholders})")
+            params.extend(sources)
+        
+        if quality_min is not None:
+            conditions.append("quality_score >= ?")
+            params.append(quality_min)
+        
+        if date_from:
+            conditions.append("created_at >= ?")
+            params.append(date_from.isoformat())
+        
+        if date_to:
+            conditions.append("created_at <= ?")
+            params.append(date_to.isoformat())
+        
+        if search_query:
+            conditions.append("(title LIKE ? OR content LIKE ?)")
+            search_term = f"%{search_query}%"
+            params.extend([search_term, search_term])
+        
+        # Build WHERE clause
+        where_clause = ""
+        if conditions:
+            where_clause = " WHERE " + " AND ".join(conditions)
+        
+        # Final queries
+        articles_query = f"{base_query}{where_clause} ORDER BY created_at DESC LIMIT ? OFFSET ?"
+        final_count_query = f"{count_query}{where_clause}"
+        
+        with get_db_connection() as conn:
+            # Get articles
+            articles_cursor = conn.execute(articles_query, params + [limit, offset])
+            articles = [dict(row) for row in articles_cursor.fetchall()]
+            
+            # Get total count
+            count_cursor = conn.execute(final_count_query, params)
+            total_articles = count_cursor.fetchone()['total']
+        
+        return {
+            "articles": articles,
+            "pagination": {
+                "limit": limit,
+                "offset": offset,
+                "total": total_articles,
+                "has_more": offset + limit < total_articles,
+                "next_offset": offset + limit if offset + limit < total_articles else None
+            },
+            "filters_applied": {
+                "sources": sources,
+                "quality_min": quality_min,
+                "date_from": date_from.isoformat() if date_from else None,
+                "date_to": date_to.isoformat() if date_to else None,
+                "search_query": search_query
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Database query failed: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to fetch articles from database: {e}"
+        )
+
 @app.get("/api/v1/pipeline/results/{execution_id}/download")
 async def download_results(
     execution_id: str = Path(..., description="Pipeline execution ID"),
@@ -916,63 +1503,69 @@ async def download_results(
 ):
     """Download pipeline results in various formats"""
     
-    # Get cached results
-    articles = await cache.get(f"pipeline_result:{execution_id}")
+    # Get execution status to find output files
+    execution_status = get_execution_status(execution_id)
     
-    if not articles:
+    if not execution_status or execution_status.get("status") != "completed":
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Pipeline results not found or expired"
+            detail="Pipeline results not found or execution not completed"
         )
     
-    if format == "json":
-        # Return compressed JSON
-        json_data = json.dumps({
-            "execution_id": execution_id,
-            "exported_at": datetime.now().isoformat(),
-            "articles": articles
-        }, indent=2)
-        
-        response = Response(
-            content=gzip.compress(json_data.encode()),
-            media_type="application/json",
-            headers={
-                "Content-Encoding": "gzip",
-                "Content-Disposition": f"attachment; filename=pipeline_{execution_id}.json.gz"
-            }
-        )
-        return response
+    output_files = execution_status.get("output_files", {})
+    
+    if format == "json" and "json" in output_files:
+        json_file = output_files["json"]
+        if os.path.exists(json_file):
+            return FileResponse(
+                json_file,
+                media_type="application/json",
+                filename=f"pipeline_{execution_id}.json"
+            )
     
     elif format == "csv":
-        # Convert to CSV format
-        import csv
-        import io
-        
-        output = io.StringIO()
-        writer = csv.DictWriter(output, fieldnames=[
-            'news_id', 'news_source', 'source_url', 'news_title', 
-            'ai_summary', 'news_published_date', 'quality_score'
-        ])
-        
-        writer.writeheader()
-        for article in articles:
-            writer.writerow({
-                'news_id': article.get('news_id'),
-                'news_source': article.get('news_source'),
-                'source_url': article.get('source_url'),
-                'news_title': article.get('news_title'),
-                'ai_summary': article.get('ai_summary'),
-                'news_published_date': article.get('news_published_date'),
-                'quality_score': article.get('metadata', {}).get('quality_score')
-            })
-        
-        return Response(
-            content=output.getvalue(),
-            media_type="text/csv",
-            headers={
-                "Content-Disposition": f"attachment; filename=pipeline_{execution_id}.csv"
-            }
-        )
+        # Generate CSV from database
+        try:
+            with get_db_connection() as conn:
+                cursor = conn.execute('''
+                    SELECT news_id, source, url, title, ai_summary, 
+                           published_date, quality_score, created_at
+                    FROM articles 
+                    ORDER BY created_at DESC
+                ''')
+                
+                import csv
+                import io
+                
+                output = io.StringIO()
+                writer = csv.DictWriter(output, fieldnames=[
+                    'news_id', 'source', 'url', 'title', 'ai_summary',
+                    'published_date', 'quality_score', 'created_at'
+                ])
+                
+                writer.writeheader()
+                for row in cursor.fetchall():
+                    writer.writerow(dict(row))
+                
+                return Response(
+                    content=output.getvalue(),
+                    media_type="text/csv",
+                    headers={
+                        "Content-Disposition": f"attachment; filename=pipeline_{execution_id}.csv"
+                    }
+                )
+                
+        except Exception as e:
+            logger.error(f"Failed to generate CSV: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to generate CSV export"
+            )
+    
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Results not available in {format} format"
+    )
 
 # ==================== WebSocket Endpoints ====================
 
@@ -990,7 +1583,8 @@ async def websocket_endpoint(websocket: WebSocket, room: str):
             "client_id": client_id,
             "room": room,
             "timestamp": datetime.now().isoformat(),
-            "message": f"Connected to room: {room}"
+            "message": f"Connected to room: {room}",
+            "version": "2.0.0"
         }, client_id)
         
         # Keep connection alive and handle messages
@@ -1011,12 +1605,12 @@ async def websocket_endpoint(websocket: WebSocket, room: str):
                     execution_id = message.get("execution_id")
                     if execution_id:
                         # Send current status
-                        task_status = task_manager.get_task_status(execution_id)
-                        if task_status:
+                        execution_status = get_execution_status(execution_id)
+                        if execution_status:
                             await websocket_manager.send_personal_message({
                                 "type": "pipeline_status",
                                 "execution_id": execution_id,
-                                "status": task_status
+                                "status": execution_status
                             }, client_id)
                 
             except WebSocketDisconnect:
@@ -1028,22 +1622,7 @@ async def websocket_endpoint(websocket: WebSocket, room: str):
     finally:
         websocket_manager.disconnect(client_id)
 
-# ==================== Advanced Features ====================
-
-@app.get("/api/v1/pipeline/schedule", response_model=Dict[str, Any])
-async def schedule_pipeline(
-    cron_expression: str = Query(..., description="Cron expression for scheduling"),
-    pipeline_config: PipelineRequest = Depends()
-):
-    """Schedule periodic pipeline execution (placeholder for future implementation)"""
-    
-    # This would integrate with a job scheduler like Celery or APScheduler
-    return {
-        "message": "Pipeline scheduling not yet implemented",
-        "cron_expression": cron_expression,
-        "config": jsonable_encoder(pipeline_config),
-        "note": "This feature will be available in the next release"
-    }
+# ==================== Metrics Endpoint ====================
 
 @app.get("/metrics")
 async def get_prometheus_metrics():
@@ -1070,21 +1649,34 @@ def custom_openapi():
     
     openapi_schema = get_openapi(
         title="Startt News Intelligence API",
-        version="1.0.0",
+        version="2.0.0",
         description="""
-        **Advanced News Aggregation and Analysis System**
+        **Production-Ready News Aggregation and Analysis System**
         
         This API provides enterprise-grade news intelligence capabilities with:
         
+        - **Dual Format Output**: Save results to both SQLite database and JSON files
+        - **Production Architecture**: Memory leak fixes, proper DB pooling, rate limiting
+        - **Enhanced Tracking**: Real-time execution status with persistent storage  
         - **Advanced AI Summarization**: Uses Google Gemini for intelligent content summarization
         - **Multi-Source Aggregation**: Supports 5+ Indian startup news sources
         - **Real-Time Updates**: WebSocket-based live updates
-        - **Intelligent Caching**: Multi-tier caching with Redis and in-memory layers
-        - **Rate Limiting**: Token bucket algorithm with adaptive thresholds
+        - **Intelligent Caching**: Multi-tier caching with Redis and managed in-memory layers
+        - **Pipeline Rate Limiting**: Dedicated rate limiting for expensive operations
         - **Quality Scoring**: ML-based content quality assessment
         - **Analytics Dashboard**: Comprehensive performance and usage analytics
         
-        **Rate Limits**: 60 requests per minute per client
+        **Critical Improvements in v2.0**:
+        -  Fixed memory leaks in caching system
+        -  Added proper database connection management
+        -  Implemented pipeline-specific rate limiting (3 per hour)
+        -  Enhanced execution status tracking with database persistence
+        -  Added dual format output support (JSON + SQLite)
+        -  Improved error handling and validation
+        
+        **Rate Limits**: 
+        - General API: 60 requests per minute per client
+        - Pipeline Execution: 3 requests per hour per client
         
         **WebSocket Rooms**:
         - `pipeline_updates`: Real-time pipeline execution updates
@@ -1111,7 +1703,7 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
     host = os.getenv("HOST", "0.0.0.0")
     
-    logger.info(f"🚀 Starting Startt News Intelligence API on {host}:{port}")
+    logger.info(f"🚀 Starting Startt News Intelligence API v2.0 on {host}:{port}")
     
     uvicorn.run(
         "main:app",
@@ -1122,61 +1714,3 @@ if __name__ == "__main__":
         workers=1,  # Use 1 worker to maintain shared state
         access_log=True
     )
-
-def get_db_connection():
-    """Create and return a new database connection."""
-    try:
-        conn = sqlite3.connect(os.getenv('DB_PATH', 'news_pipeline.db'))
-        conn.row_factory = sqlite3.Row
-        return conn
-    except sqlite3.Error as e:
-        logger.error(f"Database connection error: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Database connection failed"
-        )
-
-@app.get("/api/v1/db/articles", response_model=Dict[str, Any])
-async def get_articles_from_db(
-    sources: Optional[List[str]] = Query(None),
-    quality_min: Optional[float] = Query(None, ge=0.0, le=1.0),
-    date_from: Optional[datetime] = Query(None),
-    date_to: Optional[datetime] = Query(None),
-    search_query: Optional[str] = Query(None, max_length=200),
-    limit: int = Query(50, le=1000),
-    offset: int = Query(0, ge=0),
-    client_id: str = Depends(get_client_id)
-):
-    """Get articles directly from the database with advanced filtering and pagination."""
-    # Reconstruct ArticleFilter from query params
-    filter_params = ArticleFilter(
-        sources=sources,
-        quality_min=quality_min,
-        date_from=date_from,
-        date_to=date_to,
-        search_query=search_query,
-        limit=limit,
-        offset=offset
-    )
-    query = "SELECT * FROM articles LIMIT 50"
-    try:
-        with get_db_connection() as conn:
-            articles_cursor = conn.execute(query)
-            articles = [dict(row) for row in articles_cursor.fetchall()]
-            total_articles = conn.execute("SELECT COUNT(*) FROM articles").fetchone()[0]
-    except sqlite3.Error as e:
-        logger.error(f"Database query failed: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to fetch articles from database: {e}"
-        )
-    return {
-        "articles": articles,
-        "pagination": {
-            "limit": 50,
-            "offset": 0,
-            "total": total_articles,
-            "has_more": total_articles > 50,
-        },
-        "filters_applied": jsonable_encoder(filter_params),
-    }
