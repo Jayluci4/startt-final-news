@@ -1425,7 +1425,7 @@ async def get_articles_from_db(
     
     try:
         # Build dynamic query
-        base_query = "SELECT * FROM articles"
+        base_query = "SELECT title, ai_summary as description, url as redirect_url, source, image_url, created_at, news_id, content, published_date FROM articles"
         count_query = "SELECT COUNT(*) as total FROM articles"
         conditions = []
         params = []
