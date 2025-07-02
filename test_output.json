@@ -1,7 +1,7 @@
 {
   "metadata": {
     "pipeline_version": "2.0",
-    "generated_at": "2025-07-02T07:30:30.878095",
+    "generated_at": "2025-07-02T07:27:47.837724",
     "total_articles": 1,
     "sources_processed": [
       "inc42",
@@ -11,7 +11,7 @@
       "indianstartup"
     ],
     "metrics": {
-      "total_runtime": 1.0710678100585938,
+      "total_runtime": 3.4866111278533936,
       "duplicates_found": 0,
       "extraction_errors": 0,
       "ai_summaries_generated": 0

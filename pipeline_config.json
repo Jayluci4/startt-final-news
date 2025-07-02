@@ -3,5 +3,23 @@
   "max_articles_per_source": 50,
   "max_workers": 5,
   "output_file": "startup_news.json",
-  "verbose": true
+  "verbose": true,
+  "fallback_sources": [
+    {
+      "news_id": "art_0_fallback1",
+      "news_source": "FallbackSource",
+      "source_url": "https://example.com/fallback-article-1",
+      "news_title": "Fallback Article 1",
+      "news_content": "This is a cached fallback article.",
+      "description": "Fallback description.",
+      "author": "Fallback Author",
+      "news_published_date": "2024-01-01",
+      "image_url": "",
+      "metadata": {
+        "extraction_strategy": "fallback",
+        "quality_score": 0.5
+      },
+      "ai_summary": "This is a fallback summary."
+    }
+  ]
 }

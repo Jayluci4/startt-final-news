@@ -337,6 +337,7 @@ class IntelligentCache:
         self.redis_client = None
         self.max_memory_items = 1000
         self.cleanup_threshold = 1200
+        self.default_ttl = int(os.getenv('CACHE_TTL', 3600))
         
         # Initialize Redis if available
         if REDIS_AVAILABLE:
@@ -420,7 +421,7 @@ class IntelligentCache:
         self.cache_stats['misses'] += 1
         return default
     
-    async def set(self, key: str, value: Any, ttl: int = 3600) -> bool:
+    async def set(self, key: str, value: Any, ttl: int = None) -> bool:
         """Set value with intelligent tier distribution and size management"""
         try:
             # Cleanup if needed
@@ -435,7 +436,7 @@ class IntelligentCache:
             if self.redis_client:
                 try:
                     serialized = json.dumps(value, default=str)
-                    self.redis_client.setex(key, ttl, serialized)
+                    self.redis_client.setex(key, ttl or self.default_ttl, serialized)
                 except Exception as e:
                     logger.warning(f"Redis set failed: {e}")
             

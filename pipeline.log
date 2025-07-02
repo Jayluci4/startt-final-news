@@ -1569,3 +1569,910 @@
 📊 Average Quality Score: 0.925
 2025-06-19 19:25:55,121 | master_pipeline | INFO | _log_pipeline_summary:1908 | ============================================================
 2025-06-19 19:25:55,122 | main | INFO | run_initial_pipeline:609 | Initial pipeline run completed.
+2025-07-02 07:28:55,858 | main | WARNING | __init__:356 | Redis initialization failed: Error 111 connecting to localhost:6379. Connection refused.
+2025-07-02 07:28:55,888 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cuda:0
+2025-07-02 07:28:55,888 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-02 07:28:57,461 | master_pipeline | INFO | __init__:177 | Semantic similarity model loaded
+2025-07-02 07:28:57,550 | master_pipeline | INFO | __init__:1024 | ✅ AI summarization enabled with Gemini
+2025-07-02 07:28:57,552 | master_pipeline | INFO | _load_processed_articles:1175 | Loaded 110 processed URLs
+2025-07-02 07:28:57,553 | master_pipeline | INFO | __init__:1051 | Enterprise News Pipeline initialized
+2025-07-02 07:28:57,553 | main | INFO | <module>:823 | Startt news pipeline initialized successfully
+2025-07-02 07:28:57,569 | main | INFO | lifespan:904 | 🚀 Startt News Intelligence API starting up...
+2025-07-02 07:28:57,570 | main | INFO | validate_critical_config:104 | ✅ Database accessible at: news_pipeline.db
+2025-07-02 07:28:57,570 | main | INFO | validate_critical_config:112 | GEMINI_API_KEY configured
+2025-07-02 07:28:57,570 | main | INFO | validate_critical_config:122 |  All critical configurations validated
+2025-07-02 07:28:57,571 | main | INFO | init_enhanced_database:893 | ✅ Enhanced database schema initialized
+2025-07-02 07:28:57,580 | main | INFO | lifespan:924 | 📊 Metrics server started on port 8001
+2025-07-02 07:28:57,580 | main | INFO | lifespan:930 | Performing initial pipeline run to populate data...
+2025-07-02 07:28:57,581 | main | INFO | lifespan:944 | ✅ Startt News Intelligence API startup completed successfully
+2025-07-02 07:28:57,581 | master_pipeline | INFO | process_all_sources:1487 | 🚀 Starting enterprise pipeline - 5 sources, 3 workers
+2025-07-02 07:28:57,583 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Inc42 (max: 15 articles)
+2025-07-02 07:28:57,584 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Entrackr (max: 15 articles)
+2025-07-02 07:28:57,586 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Moneycontrol (max: 15 articles)
+2025-07-02 07:28:57,829 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/ "HTTP/1.1 200 OK"
+2025-07-02 07:28:57,841 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://entrackr.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:28:57,964 | master_pipeline | ERROR | _handle_source_failure:1690 | Entrackr: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:28:57,972 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping StartupNews.fyi (max: 15 articles)
+2025-07-02 07:28:57,981 | master_pipeline | INFO | process_all_sources:1510 | ✅ entrackr: 0 articles collected
+2025-07-02 07:28:58,082 | master_pipeline | ERROR | _handle_source_failure:1690 | Moneycontrol: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:28:58,083 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping IndianStartupNews (max: 15 articles)
+2025-07-02 07:28:58,084 | master_pipeline | INFO | process_all_sources:1510 | ✅ moneycontrol: 0 articles collected
+2025-07-02 07:28:58,206 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://indianstartupnews.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:28:58,249 | master_pipeline | ERROR | _handle_source_failure:1690 | IndianStartupNews: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:28:58,249 | master_pipeline | INFO | process_all_sources:1510 | ✅ indianstartup: 0 articles collected
+2025-07-02 07:28:58,447 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/the-latest/ "HTTP/1.1 200 OK"
+2025-07-02 07:28:58,552 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://inc42.com/buzz/ "HTTP/1.1 201 Created"
+2025-07-02 07:28:58,553 | master_pipeline | ERROR | _handle_source_failure:1690 | Inc42: Failed to fetch listing page
+2025-07-02 07:28:58,553 | master_pipeline | INFO | process_all_sources:1510 | ✅ inc42: 0 articles collected
+2025-07-02 07:28:58,846 | master_pipeline | ERROR | _handle_source_failure:1690 | StartupNews.fyi: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:28:58,847 | master_pipeline | INFO | process_all_sources:1510 | ✅ startupnews: 0 articles collected
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1748 | 
+============================================================
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1749 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1750 | ============================================================
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1751 | 🎯 Total Articles: 0
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1752 | ⏱️  Runtime: 1.3 seconds
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1753 | 🔄 Duplicates Found: 0
+2025-07-02 07:28:58,854 | master_pipeline | INFO | _log_pipeline_summary:1754 | ❌ Extraction Errors: 0
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1755 | 🤖 AI Summaries: 0
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1757 | 
+📈 Source Breakdown:
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • entrackr: 0 articles
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • moneycontrol: 0 articles
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • indianstartup: 0 articles
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • inc42: 0 articles
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • startupnews: 0 articles
+2025-07-02 07:28:58,855 | master_pipeline | INFO | _log_pipeline_summary:1769 | ============================================================
+2025-07-02 07:28:58,855 | master_pipeline | WARNING | process_all_sources:1530 | All sources failed or returned zero articles. Using fallback_sources from pipeline_config.json.
+2025-07-02 07:28:58,856 | main | INFO | run_initial_pipeline:936 | Initial pipeline run completed.
+2025-07-02 07:30:02,872 | main | INFO | lifespan:948 | Startt News Intelligence API shutting down...
+2025-07-02 07:30:28,155 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cuda:0
+2025-07-02 07:30:28,155 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-02 07:30:29,708 | master_pipeline | INFO | __init__:177 | Semantic similarity model loaded
+2025-07-02 07:30:29,796 | master_pipeline | INFO | __init__:1024 | ✅ AI summarization enabled with Gemini
+2025-07-02 07:30:29,798 | master_pipeline | INFO | _load_processed_articles:1175 | Loaded 110 processed URLs
+2025-07-02 07:30:29,799 | master_pipeline | INFO | __init__:1051 | Enterprise News Pipeline initialized
+2025-07-02 07:30:29,799 | master_pipeline | INFO | process_all_sources:1487 | 🚀 Starting enterprise pipeline - 5 sources, 5 workers
+2025-07-02 07:30:29,800 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Inc42 (max: 50 articles)
+2025-07-02 07:30:29,800 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Entrackr (max: 50 articles)
+2025-07-02 07:30:29,803 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Moneycontrol (max: 50 articles)
+2025-07-02 07:30:29,804 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping IndianStartupNews (max: 50 articles)
+2025-07-02 07:30:29,805 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping StartupNews.fyi (max: 50 articles)
+2025-07-02 07:30:30,099 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://entrackr.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:30:30,106 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://indianstartupnews.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:30:30,152 | master_pipeline | ERROR | _handle_source_failure:1690 | Entrackr: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:30:30,154 | master_pipeline | INFO | process_all_sources:1510 | ✅ entrackr: 0 articles collected
+2025-07-02 07:30:30,155 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/ "HTTP/1.1 200 OK"
+2025-07-02 07:30:30,197 | master_pipeline | ERROR | _handle_source_failure:1690 | IndianStartupNews: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:30:30,200 | master_pipeline | INFO | process_all_sources:1510 | ✅ indianstartup: 0 articles collected
+2025-07-02 07:30:30,296 | master_pipeline | ERROR | _handle_source_failure:1690 | Moneycontrol: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:30:30,297 | master_pipeline | INFO | process_all_sources:1510 | ✅ moneycontrol: 0 articles collected
+2025-07-02 07:30:30,472 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/the-latest/ "HTTP/1.1 200 OK"
+2025-07-02 07:30:30,856 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://inc42.com/buzz/ "HTTP/1.1 201 Created"
+2025-07-02 07:30:30,866 | master_pipeline | ERROR | _handle_source_failure:1690 | StartupNews.fyi: Source scraping failed: 'EnterpriseNewsPipeline' object has no attribute '_extract_article_links'
+2025-07-02 07:30:30,867 | master_pipeline | ERROR | _handle_source_failure:1690 | Inc42: Failed to fetch listing page
+2025-07-02 07:30:30,869 | master_pipeline | INFO | process_all_sources:1510 | ✅ inc42: 0 articles collected
+2025-07-02 07:30:30,869 | master_pipeline | INFO | process_all_sources:1510 | ✅ startupnews: 0 articles collected
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1748 | 
+============================================================
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1749 | 📊 ENTERPRISE PIPELINE SUMMARY
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1750 | ============================================================
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1751 | 🎯 Total Articles: 0
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1752 | ⏱️  Runtime: 1.1 seconds
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1753 | 🔄 Duplicates Found: 0
+2025-07-02 07:30:30,876 | master_pipeline | INFO | _log_pipeline_summary:1754 | ❌ Extraction Errors: 0
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1755 | 🤖 AI Summaries: 0
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1757 | 
+📈 Source Breakdown:
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • entrackr: 0 articles
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • indianstartup: 0 articles
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • moneycontrol: 0 articles
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • inc42: 0 articles
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1759 |    • startupnews: 0 articles
+2025-07-02 07:30:30,877 | master_pipeline | INFO | _log_pipeline_summary:1769 | ============================================================
+2025-07-02 07:30:30,877 | master_pipeline | WARNING | process_all_sources:1530 | All sources failed or returned zero articles. Using fallback_sources from pipeline_config.json.
+2025-07-02 07:30:30,878 | master_pipeline | INFO | save_to_json:1564 | 💾 Saved 1 articles to startup_news.json
+2025-07-02 07:34:29,004 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cuda:0
+2025-07-02 07:34:29,005 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-02 07:34:30,506 | master_pipeline | INFO | __init__:177 | Semantic similarity model loaded
+2025-07-02 07:34:30,594 | master_pipeline | INFO | __init__:1024 | ✅ AI summarization enabled with Gemini
+2025-07-02 07:34:30,596 | master_pipeline | INFO | _load_processed_articles:1175 | Loaded 110 processed URLs
+2025-07-02 07:34:30,597 | master_pipeline | INFO | __init__:1051 | Enterprise News Pipeline initialized
+2025-07-02 07:34:30,597 | master_pipeline | INFO | process_all_sources:1487 | 🚀 Starting enterprise pipeline - 5 sources, 5 workers
+2025-07-02 07:34:30,598 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Inc42 (max: 50 articles)
+2025-07-02 07:34:30,599 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Moneycontrol (max: 50 articles)
+2025-07-02 07:34:30,600 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping StartupNews.fyi (max: 50 articles)
+2025-07-02 07:34:30,600 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping IndianStartupNews (max: 50 articles)
+2025-07-02 07:34:30,601 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Entrackr (max: 50 articles)
+2025-07-02 07:34:30,934 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://entrackr.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:34:31,009 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://indianstartupnews.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:34:31,017 | master_pipeline | INFO | async_scrape_source:1323 | Entrackr: Found 1 potential articles
+2025-07-02 07:34:31,017 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] Entrackr: Completed in 0.4s - 0 articles
+2025-07-02 07:34:31,019 | master_pipeline | INFO | process_all_sources:1510 | ✅ entrackr: 0 articles collected
+2025-07-02 07:34:31,070 | master_pipeline | INFO | async_scrape_source:1323 | IndianStartupNews: Found 9 potential articles
+2025-07-02 07:34:31,070 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] IndianStartupNews: Completed in 0.5s - 0 articles
+2025-07-02 07:34:31,071 | master_pipeline | INFO | process_all_sources:1510 | ✅ indianstartup: 0 articles collected
+2025-07-02 07:34:31,182 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/the-latest/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:31,515 | master_pipeline | INFO | async_scrape_source:1323 | StartupNews.fyi: Found 85 potential articles
+2025-07-02 07:34:31,694 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://inc42.com/buzz/ "HTTP/1.1 201 Created"
+2025-07-02 07:34:31,695 | master_pipeline | ERROR | _handle_source_failure:1690 | Inc42: Failed to fetch listing page
+2025-07-02 07:34:31,696 | master_pipeline | INFO | process_all_sources:1510 | ✅ inc42: 0 articles collected
+2025-07-02 07:34:31,877 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:32,015 | master_pipeline | INFO | async_scrape_source:1323 | Moneycontrol: Found 25 potential articles
+2025-07-02 07:34:32,527 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/study-abroad-platform-leap-eyes-m-a-in-undergrad-upskilling-segments-turns-ebitda-positive-13216830.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:32,742 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:32,742 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:32,743 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/study-abroad-platform-leap-eyes-m-a-in-undergrad-upskilling-segments-turns-ebitda-positive-13216830.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:32,757 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/interest-rates-are-still-on-downward-path-bank-of-england-chief/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:32,993 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:32,993 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:32,994 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/interest-rates-are-still-on-downward-path-bank-of-england-chief/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:33,330 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/technology/fintech-nbfcs-accounted-for-75-of-all-personal-loans-in-fy25-a-3x-growth-in-six-years-article-13217046.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:33,492 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:33,493 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:33,493 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/technology/fintech-nbfcs-accounted-for-75-of-all-personal-loans-in-fy25-a-3x-growth-in-six-years-article-13217046.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:34,017 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/india/stranded-by-bike-taxi-ban-in-bengaluru-a-first-person-account-13216629.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:34,163 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:34,163 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:34,164 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/india/stranded-by-bike-taxi-ban-in-bengaluru-a-first-person-account-13216629.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:34,220 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/tiktok-shop-launches-in-japan-despite-us-uncertainty/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:34,712 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/funding/investors-are-choosy-about-metrics-rtp-global-s-nishit-garg-explains-late-stage-funding-slowdown-13211223.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:34,717 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:34,717 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:34,718 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/tiktok-shop-launches-in-japan-despite-us-uncertainty/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:34,859 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:34,859 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:34,861 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/funding/investors-are-choosy-about-metrics-rtp-global-s-nishit-garg-explains-late-stage-funding-slowdown-13211223.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:35,394 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/technology/pm-modi-hails-the-role-of-upi-in-enabling-the-vision-of-digital-india-article-13210240.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:35,551 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:35,551 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:35,552 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/technology/pm-modi-hails-the-role-of-upi-in-enabling-the-vision-of-digital-india-article-13210240.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:35,960 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/pine-labs-to-appoint-avendus-capitals-sameer-kamath-as-cfo/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:36,147 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/ipo/shadowfax-takes-confidential-route-to-file-paper-for-rs-2-500-crore-ipo-13209867.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:36,206 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:36,212 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:36,218 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/pine-labs-to-appoint-avendus-capitals-sameer-kamath-as-cfo/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:36,302 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:36,302 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:36,302 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/ipo/shadowfax-takes-confidential-route-to-file-paper-for-rs-2-500-crore-ipo-13209867.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:36,426 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/chinas-alibaba-launches-ecommerce-subsidies-of-7-billion-in-consumption-boost/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:36,667 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:36,667 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:36,668 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/chinas-alibaba-launches-ecommerce-subsidies-of-7-billion-in-consumption-boost/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:37,499 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/appsforbharat-raises-20-million-in-series-c-funding-led-by-susquehanna-asia-venture-capital-13206798.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:37,687 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:37,688 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:37,689 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/appsforbharat-raises-20-million-in-series-c-funding-led-by-susquehanna-asia-venture-capital-13206798.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:37,919 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/nothing-phone-3-sparks-mixed-reactions-online-cool-as-hell-or-nothing-to-talk-about/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:38,158 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:38,158 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:38,159 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/nothing-phone-3-sparks-mixed-reactions-online-cool-as-hell-or-nothing-to-talk-about/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:38,279 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/former-cognizant-ceo-founded-pe-firm-recognize-closes-second-fund-at-1-7-bn-13204805.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:38,422 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:38,422 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:38,422 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/former-cognizant-ceo-founded-pe-firm-recognize-closes-second-fund-at-1-7-bn-13204805.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:38,962 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/funding/b2b-startup-jumbotail-raises-120-million-from-sc-ventures-at-1-billion-valuation-13203273.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:39,101 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:39,101 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:39,101 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/funding/b2b-startup-jumbotail-raises-120-million-from-sc-ventures-at-1-billion-valuation-13203273.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:39,419 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/slowmist-warns-of-5-insidious-crypto-scams-from-q2/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:39,614 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/funding/infra-market-secures-additional-50-million-debt-from-mars-growth-ahead-of-ipo-13201399.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:39,804 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:39,809 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:39,815 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/slowmist-warns-of-5-insidious-crypto-scams-from-q2/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:39,846 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:39,846 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:39,847 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/funding/infra-market-secures-additional-50-million-debt-from-mars-growth-ahead-of-ipo-13201399.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:40,448 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/aukera-raises-15-million-from-peak-xv-partners-fireside-ventures-13201188.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:40,603 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:40,603 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:40,604 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/aukera-raises-15-million-from-peak-xv-partners-fireside-ventures-13201188.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:41,027 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/stripe-joins-16m-series-a-for-ai-driven-ecommerce-startup-remark/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:41,470 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/zomato-founder-deepinder-goyal-sets-sight-on-aviation-with-lat-aerospace-13199862.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:41,599 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:41,609 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:41,615 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/stripe-joins-16m-series-a-for-ai-driven-ecommerce-startup-remark/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:41,692 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:41,692 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:41,693 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/zomato-founder-deepinder-goyal-sets-sight-on-aviation-with-lat-aerospace-13199862.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:41,822 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/italys-unicredit-launches-bitcoin-product-linked-to-blackrock-etf/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:42,063 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:42,063 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:42,063 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/italys-unicredit-launches-bitcoin-product-linked-to-blackrock-etf/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:42,192 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/ipo/meesho-shareholders-approve-rs-4-250-crore-primary-fundraise-via-ipo-13198806.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:42,335 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:42,336 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:42,336 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/ipo/meesho-shareholders-approve-rs-4-250-crore-primary-fundraise-via-ipo-13198806.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:43,003 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/slice-now-matches-hdfc-bank-s-scale-in-monthly-account-openings-says-founder-rajan-bajaj-13197004.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:43,237 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:43,237 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:43,239 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/slice-now-matches-hdfc-bank-s-scale-in-monthly-account-openings-says-founder-rajan-bajaj-13197004.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:43,289 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/ridhhima-mohan-wins-apj-abdul-kalam-award-in-education-for-redefining-student-excellence/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:43,524 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:43,524 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:43,525 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/ridhhima-mohan-wins-apj-abdul-kalam-award-in-education-for-redefining-student-excellence/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:43,714 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/softbanks-ampere-deal-to-face-in-depth-review-by-ftc-bloomberg-news/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:43,779 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/technology/driver-fee-pickup-fee-congestion-fee-bengaluru-ride-hailing-users-hit-hard-by-add-on-charges-article-13192720.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:44,034 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:44,039 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:44,045 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/softbanks-ampere-deal-to-face-in-depth-review-by-ftc-bloomberg-news/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:44,075 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:44,076 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:44,078 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/technology/driver-fee-pickup-fee-congestion-fee-bengaluru-ride-hailing-users-hit-hard-by-add-on-charges-article-13192720.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:44,269 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/the-biggest-iphone-17-mystery-left-could-swing-a-lot-of-upgrade-decisions/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:44,510 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:44,510 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:44,511 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/the-biggest-iphone-17-mystery-left-could-swing-a-lot-of-upgrade-decisions/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:44,623 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/inside-raphe-mphibr-the-noida-based-drone-maker-emerging-from-stealth-after-rapid-ascent-13190841.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:44,766 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:44,767 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:44,768 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/inside-raphe-mphibr-the-noida-based-drone-maker-emerging-from-stealth-after-rapid-ascent-13190841.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:45,367 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/pine-labs-inches-into-profit-in-9m-fy25-ahead-of-ipo-steadies-base-for-global-push-13186655.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:45,509 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:45,509 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:45,510 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/pine-labs-inches-into-profit-in-9m-fy25-ahead-of-ipo-steadies-base-for-global-push-13186655.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:45,747 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/trump-threatens-musk-over-subsidies-as-feud-erupts-around-big-beautiful-bill/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:45,992 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:45,992 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:45,993 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/trump-threatens-musk-over-subsidies-as-feud-erupts-around-big-beautiful-bill/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:46,114 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/wakefit-ipo-issue-size-exit-bonanza-financials-and-key-risks-decoded-13190468.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:46,588 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:46,588 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:46,590 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/wakefit-ipo-issue-size-exit-bonanza-financials-and-key-risks-decoded-13190468.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:47,111 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/ipo/wakefit-files-ipo-papers-to-raise-rs-468-crore-via-fresh-issue-investors-to-offload-5-8-crore-shares-in-ofs-13189164.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:47,188 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/karnataka-sets-up-working-group-to-fix-gig-worker-welfare-fee/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:47,259 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:47,259 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:47,260 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/ipo/wakefit-files-ipo-papers-to-raise-rs-468-crore-via-fresh-issue-investors-to-offload-5-8-crore-shares-in-ofs-13189164.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:47,449 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:47,449 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:47,449 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/karnataka-sets-up-working-group-to-fix-gig-worker-welfare-fee/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:47,878 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/pine-labs-reports-rs-310-crore-gst-exposure-in-drhp-appeals-pending-13186613.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:48,036 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:48,036 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:48,037 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/pine-labs-reports-rs-310-crore-gst-exposure-in-drhp-appeals-pending-13186613.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:48,638 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/noida-international-airport-partners-with-kyndryl-to-build-ai-driven-secure-tech-infrastructure/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:48,873 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:48,873 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:48,874 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/noida-international-airport-partners-with-kyndryl-to-build-ai-driven-secure-tech-infrastructure/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:49,872 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/from-ceo-to-cto-what-pine-labs-brass-earns-and-the-ipo-windfall-that-awaits-them-13185927.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:50,115 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/india-urged-to-consider-bitcoin-as-part-of-its-strategic-reserves/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:50,155 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:50,155 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:50,156 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/from-ceo-to-cto-what-pine-labs-brass-earns-and-the-ipo-windfall-that-awaits-them-13185927.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:50,366 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:50,366 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:50,367 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/india-urged-to-consider-bitcoin-as-part-of-its-strategic-reserves/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:50,767 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/phonepe-hdfc-bank-launch-co-branded-rupay-credit-card-with-upi-integration-13186883.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:50,909 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:50,909 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:50,910 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/phonepe-hdfc-bank-launch-co-branded-rupay-credit-card-with-upi-integration-13186883.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:51,506 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/virat-kohli-begins-agilitas-innings-with-rs-40-crore-investment-in-first-tranche-13186936.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:51,593 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/mapping-the-key-players-in-chinas-ecommerce-arena/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:51,650 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:51,650 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:51,651 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/virat-kohli-begins-agilitas-innings-with-rs-40-crore-investment-in-first-tranche-13186936.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:51,838 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:51,838 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:51,839 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/mapping-the-key-players-in-chinas-ecommerce-arena/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:52,318 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/ipo/peak-xv-to-offload-the-biggest-chunk-in-pine-labs-ipo-paypal-temasek-also-trimming-stakes-13184063.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:52,458 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:52,459 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:52,460 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/ipo/peak-xv-to-offload-the-biggest-chunk-in-pine-labs-ipo-paypal-temasek-also-trimming-stakes-13184063.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:53,035 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/binance-to-keep-sg-staff-under-new-regulation-on-crypto-firms/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:53,071 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/swiggy-replied-to-zepto-cafe-by-launching-snacc-in-16-days-says-ceo-sriharsha-majety-13183076.html "HTTP/1.1 200 OK"
+2025-07-02 07:34:53,232 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:53,243 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:53,249 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://www.moneycontrol.com/news/business/startup/swiggy-replied-to-zepto-cafe-by-launching-snacc-in-16-days-says-ceo-sriharsha-majety-13183076.html: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:53,254 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] Moneycontrol: Completed in 22.7s - 0 articles
+2025-07-02 07:34:53,297 | master_pipeline | INFO | process_all_sources:1510 | ✅ moneycontrol: 0 articles collected
+2025-07-02 07:34:53,353 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:53,353 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:53,354 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/binance-to-keep-sg-staff-under-new-regulation-on-crypto-firms/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:54,613 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/apple-eyes-chatgpt-or-claude-to-supercharge-siris-next-big-update/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:55,150 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:55,151 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:55,151 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/apple-eyes-chatgpt-or-claude-to-supercharge-siris-next-big-update/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:56,345 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/whatsapp-to-soon-let-users-seamlessly-switch-between-two-accounts-in-one-app/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:56,587 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:56,587 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:56,588 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/whatsapp-to-soon-let-users-seamlessly-switch-between-two-accounts-in-one-app/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:57,830 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/cloudflare-introduces-default-blocking-of-ai-data-scrapers/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:58,061 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:58,061 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:58,061 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/cloudflare-introduces-default-blocking-of-ai-data-scrapers/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:34:59,263 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/namakkal-restaurants-cut-ties-with-swiggy-zomato-over-commission-dispute/ "HTTP/1.1 200 OK"
+2025-07-02 07:34:59,497 | master_pipeline | ERROR | _generate_ai_summary:1834 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:34:59,497 | master_pipeline | ERROR | _generate_ai_summary:1836 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:34:59,498 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/namakkal-restaurants-cut-ties-with-swiggy-zomato-over-commission-dispute/: 'EnterpriseNewsPipeline' object has no attribute '_save_article'
+2025-07-02 07:39:42,809 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cuda:0
+2025-07-02 07:39:42,809 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-02 07:39:44,297 | master_pipeline | INFO | __init__:177 | Semantic similarity model loaded
+2025-07-02 07:39:44,394 | master_pipeline | INFO | __init__:1024 | ✅ AI summarization enabled with Gemini
+2025-07-02 07:39:44,396 | master_pipeline | INFO | _load_processed_articles:1175 | Loaded 110 processed URLs
+2025-07-02 07:39:44,396 | master_pipeline | INFO | __init__:1051 | Enterprise News Pipeline initialized
+2025-07-02 07:39:44,396 | master_pipeline | INFO | process_all_sources:1487 | 🚀 Starting enterprise pipeline - 5 sources, 5 workers
+2025-07-02 07:39:44,397 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Inc42 (max: 50 articles)
+2025-07-02 07:39:44,399 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Entrackr (max: 50 articles)
+2025-07-02 07:39:44,399 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Moneycontrol (max: 50 articles)
+2025-07-02 07:39:44,401 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping StartupNews.fyi (max: 50 articles)
+2025-07-02 07:39:44,401 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping IndianStartupNews (max: 50 articles)
+2025-07-02 07:39:44,744 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://entrackr.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:39:44,800 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://indianstartupnews.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:39:44,828 | master_pipeline | INFO | async_scrape_source:1323 | Entrackr: Found 1 potential articles
+2025-07-02 07:39:44,829 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] Entrackr: Completed in 0.4s - 0 articles
+2025-07-02 07:39:44,830 | master_pipeline | INFO | process_all_sources:1510 | ✅ entrackr: 0 articles collected
+2025-07-02 07:39:44,879 | master_pipeline | INFO | async_scrape_source:1323 | IndianStartupNews: Found 9 potential articles
+2025-07-02 07:39:44,879 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] IndianStartupNews: Completed in 0.5s - 0 articles
+2025-07-02 07:39:44,880 | master_pipeline | INFO | process_all_sources:1510 | ✅ indianstartup: 0 articles collected
+2025-07-02 07:39:44,910 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/the-latest/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:45,231 | master_pipeline | INFO | async_scrape_source:1323 | StartupNews.fyi: Found 85 potential articles
+2025-07-02 07:39:45,426 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://inc42.com/buzz/ "HTTP/1.1 201 Created"
+2025-07-02 07:39:45,427 | master_pipeline | ERROR | _handle_source_failure:1785 | Inc42: Failed to fetch listing page
+2025-07-02 07:39:45,428 | master_pipeline | INFO | process_all_sources:1510 | ✅ inc42: 0 articles collected
+2025-07-02 07:39:45,629 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:45,809 | master_pipeline | INFO | async_scrape_source:1323 | Moneycontrol: Found 25 potential articles
+2025-07-02 07:39:46,339 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/study-abroad-platform-leap-eyes-m-a-in-undergrad-upskilling-segments-turns-ebitda-positive-13216830.html "HTTP/1.1 200 OK"
+2025-07-02 07:39:46,480 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/interest-rates-are-still-on-downward-path-bank-of-england-chief/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:46,575 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:46,575 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:46,612 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'Study abroad platform Leap eyes M&A in undergrad, upskilling...'
+2025-07-02 07:39:46,731 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:46,732 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:46,742 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'Interest rates are still on ‘downward’ path – Bank of Englan...'
+2025-07-02 07:39:48,931 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/tiktok-shop-launches-in-japan-despite-us-uncertainty/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:49,173 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:49,173 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:49,185 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'TikTok Shop launches in Japan despite US uncertainty...'
+2025-07-02 07:39:50,156 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/technology/fintech-nbfcs-accounted-for-75-of-all-personal-loans-in-fy25-a-3x-growth-in-six-years-article-13217046.html "HTTP/1.1 200 OK"
+2025-07-02 07:39:50,295 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:50,296 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:50,311 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'Fintech NBFCs accounted for 75% of all personal loans in FY2...'
+2025-07-02 07:39:52,410 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/pine-labs-to-appoint-avendus-capitals-sameer-kamath-as-cfo/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:52,907 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:52,908 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:52,920 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'Pine Labs To Appoint Avendus Capital’s Sameer Kamath As CFO...'
+2025-07-02 07:39:54,460 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/india/stranded-by-bike-taxi-ban-in-bengaluru-a-first-person-account-13216629.html "HTTP/1.1 200 OK"
+2025-07-02 07:39:54,645 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:54,645 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:54,666 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'Stranded by bike taxi ban in Bengaluru: A first-person accou...'
+2025-07-02 07:39:56,245 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/chinas-alibaba-launches-ecommerce-subsidies-of-7-billion-in-consumption-boost/ "HTTP/1.1 200 OK"
+2025-07-02 07:39:56,480 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:39:56,480 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:39:56,494 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'China’s Alibaba launches ecommerce subsidies of $7 billion i...'
+2025-07-02 07:40:33,762 | sentence_transformers.SentenceTransformer | INFO | __init__:211 | Use pytorch device_name: cuda:0
+2025-07-02 07:40:33,762 | sentence_transformers.SentenceTransformer | INFO | __init__:219 | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-02 07:40:35,700 | master_pipeline | INFO | __init__:177 | Semantic similarity model loaded
+2025-07-02 07:40:35,788 | master_pipeline | INFO | __init__:1024 | ✅ AI summarization enabled with Gemini
+2025-07-02 07:40:35,790 | master_pipeline | INFO | _load_processed_articles:1175 | Loaded 117 processed URLs
+2025-07-02 07:40:35,791 | master_pipeline | INFO | __init__:1051 | Enterprise News Pipeline initialized
+2025-07-02 07:40:35,791 | master_pipeline | INFO | process_all_sources:1487 | 🚀 Starting enterprise pipeline - 5 sources, 5 workers
+2025-07-02 07:40:35,792 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Inc42 (max: 50 articles)
+2025-07-02 07:40:35,793 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Entrackr (max: 50 articles)
+2025-07-02 07:40:35,795 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping Moneycontrol (max: 50 articles)
+2025-07-02 07:40:35,795 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping IndianStartupNews (max: 50 articles)
+2025-07-02 07:40:35,796 | master_pipeline | INFO | async_scrape_source:1310 | 🔍 [async] Scraping StartupNews.fyi (max: 50 articles)
+2025-07-02 07:40:36,121 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://entrackr.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:40:36,157 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/ "HTTP/1.1 200 OK"
+2025-07-02 07:40:36,159 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://indianstartupnews.com/news "HTTP/1.1 200 OK"
+2025-07-02 07:40:36,210 | master_pipeline | INFO | async_scrape_source:1323 | Entrackr: Found 1 potential articles
+2025-07-02 07:40:36,211 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] Entrackr: Completed in 0.4s - 0 articles
+2025-07-02 07:40:36,214 | master_pipeline | INFO | process_all_sources:1510 | ✅ entrackr: 0 articles collected
+2025-07-02 07:40:36,349 | master_pipeline | INFO | async_scrape_source:1323 | Moneycontrol: Found 25 potential articles
+2025-07-02 07:40:36,377 | master_pipeline | INFO | async_scrape_source:1323 | IndianStartupNews: Found 9 potential articles
+2025-07-02 07:40:36,377 | master_pipeline | INFO | async_scrape_source:1344 | ✅ [async] IndianStartupNews: Completed in 0.6s - 0 articles
+2025-07-02 07:40:36,378 | master_pipeline | INFO | process_all_sources:1510 | ✅ indianstartup: 0 articles collected
+2025-07-02 07:40:36,818 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://inc42.com/buzz/ "HTTP/1.1 201 Created"
+2025-07-02 07:40:36,819 | master_pipeline | ERROR | _handle_source_failure:1785 | Inc42: Failed to fetch listing page
+2025-07-02 07:40:36,819 | master_pipeline | INFO | process_all_sources:1510 | ✅ inc42: 0 articles collected
+2025-07-02 07:40:36,893 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/funding/investors-are-choosy-about-metrics-rtp-global-s-nishit-garg-explains-late-stage-funding-slowdown-13211223.html "HTTP/1.1 200 OK"
+2025-07-02 07:40:37,089 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:37,089 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:37,106 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'Investors are choosy about metrics: RTP Global’s Nishit Garg...'
+2025-07-02 07:40:38,357 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/the-latest/ "HTTP/1.1 200 OK"
+2025-07-02 07:40:38,809 | master_pipeline | INFO | async_scrape_source:1323 | StartupNews.fyi: Found 85 potential articles
+2025-07-02 07:40:40,066 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/oneplus-nord-ce5-to-launch-on-july-8-with-7100-mah-battery/ "HTTP/1.1 200 OK"
+2025-07-02 07:40:40,316 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:40,317 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:40,329 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'OnePlus Nord CE5 to launch on July 8 with 7,100 mAh......'
+2025-07-02 07:40:40,776 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/technology/pm-modi-hails-the-role-of-upi-in-enabling-the-vision-of-digital-india-article-13210240.html "HTTP/1.1 200 OK"
+2025-07-02 07:40:40,955 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:40,955 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:40,971 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'PM Modi hails the role of UPI in enabling the vision of Digi...'
+2025-07-02 07:40:43,574 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/celebrate-independence-day-with-up-to-70-off-pcloud-lifetime-plans/ "HTTP/1.1 200 OK"
+2025-07-02 07:40:43,812 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:43,812 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:43,824 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'Celebrate Independence Day with up to 70% off pCloud lifetim...'
+2025-07-02 07:40:44,544 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/ipo/shadowfax-takes-confidential-route-to-file-paper-for-rs-2-500-crore-ipo-13209867.html "HTTP/1.1 200 OK"
+2025-07-02 07:40:44,920 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:44,920 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:44,935 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'Shadowfax takes confidential route to file paper for Rs 2,50...'
+2025-07-02 07:40:47,067 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://startupnews.fyi/2025/07/02/cimware-bags-2-3-mn-in-maiden-funding-round/ "HTTP/1.1 200 OK"
+2025-07-02 07:40:47,305 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:47,305 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:47,319 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] StartupNews.fyi: Processed 'CIMware Bags $2.3 Mn In Maiden Funding Round...'
+2025-07-02 07:40:48,503 | httpx | INFO | _send_single_request:1740 | HTTP Request: GET https://www.moneycontrol.com/news/business/startup/appsforbharat-raises-20-million-in-series-c-funding-led-by-susquehanna-asia-venture-capital-13206798.html "HTTP/1.1 200 OK"
+2025-07-02 07:40:48,647 | master_pipeline | ERROR | _generate_ai_summary:1929 | AI summarization failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-07-02 07:40:48,647 | master_pipeline | ERROR | _generate_ai_summary:1931 | Gemini API failed after retries, using fallback summary.
+2025-07-02 07:40:48,664 | master_pipeline | INFO | async_scrape_source:1336 | ✅ [async] Moneycontrol: Processed 'AppsForBharat raises $20 million in Series C funding led by ...'
+2025-07-02 07:40:49,375 | master_pipeline | ERROR | async_scrape_source:1339 | Error processing article https://startupnews.fyi/2025/07/02/nothing-phone-3-sparks-mixed-reactions-online-cool-as-hell-or-nothing-to-talk-about/: cannot schedule new futures after shutdown
