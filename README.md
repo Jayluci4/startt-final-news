@@ -197,6 +197,8 @@ The following environment variables can be set in your .env file or system envir
 | DB_PATH | SQLite database path | news_pipeline.db | No |
 | OUTPUT_FILE | Output JSON filename | auto-generated | No |
 | VERBOSE | Enable verbose logging | true | No |
+| REDIS_URL | Redis URL | None | No |
+| CACHE_TTL | Redis cache expiry in seconds (default: 3600) | 3600 | No |
 
 🤝 Contributing
 Contributions are welcome! Please follow these steps:
@@ -212,3 +214,27 @@ Commit your changes (git commit -m 'Add some feature').
 Push to the branch (git push origin feature/your-feature-name).
 
 Open a Pull Request.
+
+## Quickstart (Docker)
+
+```bash
+git clone ...
+cd startt-final-news
+cp .env.example .env
+docker-compose up --build
+```
+
+## Environment Variables
+
+See `.env.example` for all required variables. Key ones:
+- `GEMINI_API_KEY`: Google Generative AI key
+- `MAX_ARTICLES_PER_SOURCE`, `MAX_WORKERS`, `DB_PATH`, `OUTPUT_FILE`, `VERBOSE`
+- `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_HOST`, `POSTGRES_PORT`
+- `REDIS_URL`
+- `CACHE_TTL`: Redis cache expiry in seconds (default: 3600)
+
+## Running Tests
+
+```bash
+pytest tests/
+```
